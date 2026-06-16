@@ -1,0 +1,89 @@
+# Hương Quê Việt — my-miniapp-project
+
+Website thương mại điện tử đặt món ăn Việt Nam trực tuyến, xây dựng bằng **ASP.NET Core MVC (.NET 8)**, phát triển theo mô hình **Scrum** qua 2 Sprint.
+
+## Giới thiệu nhanh
+
+Hệ thống cho phép khách hàng xem thực đơn, đặt món, thanh toán (COD/VNPay) và theo dõi đơn hàng theo thời gian thực; đồng thời cung cấp phân hệ vận hành nội bộ cho Nhân viên bếp, Shipper, và phân hệ quản trị toàn diện cho Admin (danh mục, sản phẩm, người dùng, nguyên liệu, thống kê). Chi tiết đầy đủ về nghiệp vụ và kiến trúc xem tại [`docs/architecture/architecture-overview.md`](docs/architecture/architecture-overview.md).
+
+## Công nghệ sử dụng
+
+ASP.NET Core MVC (.NET 8) · Entity Framework Core (Code First) · SQL Server · ASP.NET Core Identity + JWT · SignalR · VNPay Sandbox · Chart.js · xUnit
+
+## Cách cài đặt và chạy
+
+1. Yêu cầu: .NET 8 SDK, SQL Server (LocalDB đủ dùng), Visual Studio 2022 (khuyến nghị) hoặc `dotnet` CLI.
+2. Mở thư mục `src/` bằng Visual Studio, hoặc từ dòng lệnh:
+   ```
+   cd src
+   dotnet restore
+   ```
+3. Cập nhật `src/appsettings.json`: điền `RestaurantLocation`, và nếu muốn test đầy đủ tính năng thanh toán/thông báo, điền thêm `Vnpay` (đăng ký Sandbox tại VNPay) và `Smtp` (đăng ký free tại Mailtrap.io). Không điền cũng chạy được các chức năng còn lại bình thường.
+4. Tạo database:
+   ```
+   dotnet ef database update
+   ```
+   (nếu chưa có `dotnet-ef`, cài qua `dotnet tool install --global dotnet-ef`)
+5. Chạy ứng dụng:
+   ```
+   dotnet run
+   ```
+   hoặc nhấn F5 trong Visual Studio.
+6. Sau khi đăng ký tài khoản đầu tiên, gán quyền Admin bằng tay qua SQL (chưa có giao diện "tạo Admin đầu tiên" vì lý do bảo mật hiển nhiên — trang quản lý người dùng yêu cầu đã là Admin mới vào được):
+   ```sql
+   INSERT INTO AspNetUserRoles (UserId, RoleId)
+   SELECT u.Id, r.Id FROM AspNetUsers u, AspNetRoles r
+   WHERE u.Email = '<email của bạn>' AND r.Name = 'Admin';
+   ```
+
+## Chạy Unit Test
+
+```
+cd tests
+dotnet test
+```
+
+> Thư mục `tests/` được đặt ngang hàng với `src/` (không lồng bên trong) theo đúng quy ước chuẩn của giải pháp .NET (solution có nhiều project: 1 project chạy được + 1 project test riêng) — đây là điểm điều chỉnh nhỏ so với cây thư mục mẫu ban đầu (vốn thiết kế chung cho các framework JavaScript không có khái niệm project/solution tách biệt).
+
+## Cấu trúc thư mục
+
+```
+my-miniapp-project/
+├── .github/              → Template cho Issue (User Story, Bug) và Pull Request
+├── docs/
+│   ├── agile/             → Toàn bộ tài liệu Scrum: Product Backlog, 2 Sprint
+│   └── architecture/       → Kiến trúc hệ thống, thiết kế cơ sở dữ liệu
+├── src/                   → Mã nguồn chính (ASP.NET Core MVC)
+│   ├── Areas/Admin/         → Phân hệ quản trị (Controller + View riêng)
+│   ├── Controllers/         → Controller cho khách hàng
+│   ├── Models/               → Entity + ViewModel
+│   ├── Data/                  → DbContext
+│   ├── Services/               → Nghiệp vụ tách riêng (Coupon, VNPay, Notification)
+│   ├── Helpers/                 → Haversine, State Machine, thư viện chữ ký VNPay
+│   ├── Hubs/                     → SignalR
+│   ├── ViewComponents/            → Giỏ hàng mini trên Navbar
+│   ├── Views/                      → Giao diện Razor
+│   └── wwwroot/                     → CSS, ảnh upload
+├── tests/                 → Unit Test (xUnit)
+└── README.md
+```
+
+## Quy trình phát triển (Agile/Scrum)
+
+Dự án được thực hiện qua **2 Sprint, mỗi Sprint 2 tuần**, theo đúng các sự kiện Scrum chuẩn:
+
+- [Product Backlog](docs/agile/product-backlog.md) — toàn bộ User Story, ưu tiên theo P0/P1/P2
+- [Sprint 1](docs/agile/sprint-1/) — Nền tảng hệ thống + luồng mua hàng cơ bản
+- [Sprint 2](docs/agile/sprint-2/) — Thanh toán trực tuyến, phân hệ quản trị, tính năng mở rộng
+
+Mỗi Sprint có đủ 4 tài liệu: `sprint-planning.md`, `daily-standups.md`, `sprint-review.md`, `sprint-retro.md`.
+
+## Ghi chú về hình thức thực hiện
+
+Đồ án được thực hiện bởi **một sinh viên**, đóng đồng thời vai trò Product Owner, Scrum Master và Developer trong nhóm Scrum một-người — mô hình này vẫn giữ nguyên đầy đủ kỷ luật của các sự kiện Scrum (Sprint Planning, Daily Standup, Sprint Review, Sprint Retrospective) để rèn luyện tư duy quản lý dự án theo Agile, dù không có nhiều thành viên phối hợp.
+
+## Giới hạn hiện tại
+
+- Hỗ trợ một cửa hàng duy nhất, chưa có mô hình đa chi nhánh.
+- Gửi SMS ở dạng mô phỏng (ghi log), chưa tích hợp nhà mạng thật.
+- Ảnh sản phẩm lưu trực tiếp trên máy chủ ứng dụng (`wwwroot/uploads`), chưa dùng dịch vụ lưu trữ đám mây.
