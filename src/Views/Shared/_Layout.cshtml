@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Hương Quê Việt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fraunces:wght@600;700;900&display=swap" rel="stylesheet">
+    <link href="~/css/theme.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="vung-toi">
+        <nav class="navbar-hqv">
+            <a class="logo" asp-controller="Home" asp-action="Index">Hương Quê Việt</a>
+            <div class="nav-links">
+                <a asp-controller="Menu" asp-action="Index">Thực đơn</a>
+                <vc:cart-summary></vc:cart-summary>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <a asp-controller="Orders" asp-action="Index">Đơn hàng của tôi</a>
+                    <a asp-controller="Addresses" asp-action="Index">Địa chỉ</a>
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index">Tài khoản</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-area="Admin" asp-controller="Staff" asp-action="Index">Quản trị</a>
+                    }
+                    else if (User.IsInRole("Staff"))
+                    {
+                        <a asp-area="Admin" asp-controller="Staff" asp-action="Index">Đơn hàng cần xử lý</a>
+                    }
+                    else if (User.IsInRole("Shipper"))
+                    {
+                        <a asp-area="Admin" asp-controller="Shipper" asp-action="Index">Đơn hàng cần giao</a>
+                    }
+                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home")" method="post" style="display:inline">
+                        <button type="submit" class="btn-dau" style="padding:0.4rem 1rem; font-size:0.85rem;">Đăng xuất</button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-area="Identity" asp-page="/Account/Login">Đăng nhập</a>
+                }
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="vung-toi" style="padding: 2.5rem 2rem; text-align:center; margin-top: 4rem;">
+        <p style="font-family:'Fraunces',serif; font-size:1.2rem; margin-bottom:0.2rem;">Hương Quê Việt</p>
+        <p style="opacity:0.7; font-size:0.85rem;">Vị quê trong từng món ăn — © 2026</p>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
