@@ -1,0 +1,33 @@
+@model Product
+@{ ViewData["Title"] = Model.Name; }
+
+<section class="khu-noi-dung" style="max-width:720px;">
+    <h1>@Model.Name</h1>
+    <p>@Model.Description</p>
+    @if (Model.IsSpicy) { <span class="badge-cay">Vị cay</span> }
+    <p class="gia" style="font-size:1.5rem;">@Model.Price.ToString("N0") đ</p>
+
+    <form method="post" asp-controller="Cart" asp-action="Add" style="margin-bottom:2rem;">
+        <input type="hidden" name="productId" value="@Model.Id" />
+        <input type="hidden" name="quantity" value="1" />
+        <button type="submit" class="btn-dau">Thêm vào giỏ</button>
+    </form>
+
+    <h4>⭐ @ViewBag.AverageRating / 5 (@((List<Review>)ViewBag.Reviews).Count đánh giá)</h4>
+    @foreach (var r in (List<Review>)ViewBag.Reviews)
+    {
+        <div style="padding:0.6rem 0; border-bottom:1px solid var(--giay-do-toi);">
+            <strong>@r.Rating/5</strong> — @r.Comment
+        </div>
+    }
+
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <form method="post" asp-controller="Reviews" asp-action="Create" style="margin-top:1.5rem;">
+            <input type="hidden" name="productId" value="@Model.Id" />
+            <select name="rating"><option value="5">5 sao</option><option value="4">4 sao</option><option value="3">3 sao</option><option value="2">2 sao</option><option value="1">1 sao</option></select>
+            <input type="text" name="comment" placeholder="Nhận xét của bạn" />
+            <button type="submit" class="btn-dau">Gửi đánh giá</button>
+        </form>
+    }
+</section>
