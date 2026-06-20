@@ -1,0 +1,28 @@
+@model List<CartItem>
+@{ ViewData["Title"] = "Giỏ hàng"; }
+
+<section class="khu-noi-dung" style="max-width: 720px;">
+    <h1>Giỏ hàng (@Model.Count món)</h1>
+    @if (!Model.Any())
+    {
+        <p>Giỏ hàng đang trống. <a asp-controller="Menu" asp-action="Index">Xem thực đơn</a></p>
+    }
+    else
+    {
+        @foreach (var item in Model)
+        {
+            <div style="display:flex; justify-content:space-between; padding:0.6rem 0; border-bottom:1px solid var(--giay-do-toi);">
+                <span>@item.ProductName × @item.Quantity</span>
+                <span>
+                    @item.SubTotal.ToString("N0") đ
+                    <form method="post" asp-action="Remove" asp-controller="Cart" style="display:inline">
+                        <input type="hidden" name="productId" value="@item.ProductId" />
+                        <button type="submit" style="background:none; border:none; color:var(--gach-non);">Xóa</button>
+                    </form>
+                </span>
+            </div>
+        }
+        <p style="margin-top:1rem;"><strong>Tạm tính: @Model.Sum(i => i.SubTotal).ToString("N0") đ</strong></p>
+        <a asp-controller="Orders" asp-action="Checkout" class="btn-dau">Tiến hành đặt hàng</a>
+    }
+</section>
