@@ -1,0 +1,18 @@
+@model List<Address>
+@{ ViewData["Title"] = "Địa chỉ giao hàng"; }
+
+<section class="khu-noi-dung">
+    <h1>Địa chỉ giao hàng của tôi</h1>
+    <a asp-action="Create" class="btn-dau">+ Thêm địa chỉ mới</a>
+    @if (!Model.Any())
+    {
+        <p style="margin-top:1rem;">Bạn chưa có địa chỉ nào.</p>
+    }
+    else
+    {
+        @foreach (var a in Model)
+        {
+            <div style="padding:0.6rem 0; border-bottom:1px solid var(--giay-do-toi);">@a.Street, @a.Ward, @a.District, @a.Province</div>
+        }
+    }
+</section>
