@@ -1,0 +1,29 @@
+@model List<CartItem>
+@{ ViewData["Title"] = "Thanh toán"; }
+
+<section class="khu-noi-dung" style="max-width: 640px;">
+    <h1>Xác nhận đơn hàng</h1>
+    @if (TempData["Error"] != null)
+    {
+        <div style="color:#B71C1C; margin-bottom:1rem;">@TempData["Error"]</div>
+    }
+    <form method="post" asp-action="Checkout">
+        <h4>Giao đến</h4>
+        @foreach (var a in (List<Address>)ViewBag.Addresses)
+        {
+            <label style="display:block; margin-bottom:0.4rem;"><input type="radio" name="addressId" value="@a.Id" required /> @a.Street, @a.Ward, @a.District, @a.Province</label>
+        }
+        <a asp-controller="Addresses" asp-action="Create">+ Thêm địa chỉ mới</a>
+
+        <h4 style="margin-top:1.5rem;">Thanh toán</h4>
+        <label style="display:block;"><input type="radio" name="paymentMethod" value="COD" checked /> Thanh toán khi nhận hàng (COD)</label>
+        <label style="display:block;"><input type="radio" name="paymentMethod" value="VNPay" /> Thanh toán qua VNPay</label>
+
+        <div style="margin: 1rem 0;">
+            <input type="text" name="couponCode" placeholder="Mã giảm giá (nếu có)" style="width:100%; padding:0.6rem; border-radius:8px; border:1px solid var(--giay-do-toi); box-sizing:border-box;" />
+        </div>
+
+        <p><strong>Tạm tính: @Model.Sum(i => i.SubTotal).ToString("N0") đ</strong> (chưa gồm phí ship, tính sau khi chọn địa chỉ)</p>
+        <button type="submit" class="btn-dau" style="width:100%; border:none;">Đặt hàng ngay</button>
+    </form>
+</section>
