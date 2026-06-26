@@ -1,0 +1,17 @@
+@model List<Order>
+<h3>Đơn hàng cần giao</h3>
+<a asp-action="History">Xem lịch sử đã giao →</a>
+@foreach (var o in Model)
+{
+    <div style="margin:0.5rem 0;">
+        Đơn #@o.Id — @o.Status — @o.Address?.Street, @o.Address?.District
+        @if (o.Status == OrderStatus.Preparing)
+        {
+            <form method="post" asp-action="PickUp" style="display:inline"><input type="hidden" name="orderId" value="@o.Id" /><button class="btn btn-sm btn-primary">Nhận đơn</button></form>
+        }
+        @if (o.Status == OrderStatus.Delivering)
+        {
+            <form method="post" asp-action="CompleteDelivery" style="display:inline"><input type="hidden" name="orderId" value="@o.Id" /><button class="btn btn-sm btn-success">Hoàn thành</button></form>
+        }
+    </div>
+}
