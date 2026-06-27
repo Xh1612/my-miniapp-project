@@ -1,0 +1,33 @@
+@model Order
+@{ ViewData["Title"] = "Đơn hàng #" + Model.Id; }
+
+<section class="khu-noi-dung" style="max-width: 640px;">
+    <h1>Đơn hàng #@Model.Id</h1>
+    <p>Trạng thái: <span id="orderStatusBadge" class="badge-cay">@Model.Status</span></p>
+    @foreach (var item in Model.OrderItems)
+    {
+        <div style="display:flex; justify-content:space-between; padding:0.4rem 0; border-bottom:1px solid var(--giay-do-toi);">
+            <span>@item.Product?.Name × @item.Quantity</span>
+            <span>@((item.UnitPrice * item.Quantity).ToString("N0")) đ</span>
+        </div>
+    }
+    <p style="margin-top:1rem;"><strong>Tổng cộng: @Model.TotalAmount.ToString("N0") đ</strong></p>
+
+    @if (Model.Status == OrderStatus.Pending || Model.Status == OrderStatus.Confirmed)
+    {
+        <form method="post" asp-action="Cancel" asp-route-id="@Model.Id">
+            <button type="submit" style="background:none; border:1px solid var(--gach-non); color:var(--gach-non); padding:0.6rem 1.2rem; border-radius:4px;">Hủy đơn hàng</button>
+        </form>
+    }
+</section>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder().withUrl("/orderStatusHub").build();
+        connection.on("StatusUpdated", (newStatus) => {
+            document.getElementById("orderStatusBadge").innerText = newStatus;
+        });
+        connection.start().then(() => connection.invoke("JoinOrderGroup", @Model.Id));
+    </script>
+}
