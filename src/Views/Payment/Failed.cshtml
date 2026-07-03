@@ -1,0 +1,8 @@
+@{ ViewData["Title"] = "Thanh toán thất bại"; }
+<section class="khu-noi-dung">
+    <p>Thanh toán thất bại hoặc bị hủy.</p>
+    @if (ViewBag.OrderId != null)
+    {
+        <a asp-controller="Payment" asp-action="Create" asp-route-orderId="@ViewBag.OrderId" class="btn-dau">Thử lại thanh toán</a>
+    }
+</section>

@@ -1,0 +1,5 @@
+@{ ViewData["Title"] = "Thanh toán thành công"; }
+<section class="khu-noi-dung">
+    <p>Thanh toán thành công cho đơn hàng #@ViewBag.OrderId!</p>
+    <a asp-controller="Orders" asp-action="Confirmation" asp-route-id="@ViewBag.OrderId" class="btn-dau">Xem chi tiết đơn hàng</a>
+</section>
