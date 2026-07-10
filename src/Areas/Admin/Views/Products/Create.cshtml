@@ -1,0 +1,21 @@
+@model Product
+<h3>Thêm sản phẩm</h3>
+<form method="post" enctype="multipart/form-data">
+    <div class="mb-2"><label>Tên sản phẩm</label><input asp-for="Name" class="form-control" required /></div>
+    <div class="mb-2"><label>Mô tả</label><textarea asp-for="Description" class="form-control"></textarea></div>
+    <div class="mb-2"><label>Giá</label><input asp-for="Price" type="number" class="form-control" required /></div>
+    <div class="mb-2"><label>Tồn kho</label><input asp-for="StockQuantity" type="number" class="form-control" required /></div>
+    <div class="mb-2">
+        <label>Danh mục</label>
+        <select asp-for="CategoryId" class="form-control">
+            @foreach (var c in (List<Category>)ViewBag.Categories) { <option value="@c.Id">@c.Name</option> }
+        </select>
+    </div>
+    <div class="mb-2 form-check"><input asp-for="IsSpicy" class="form-check-input" /> <label>Món cay</label></div>
+    <div class="mb-2 form-check"><input asp-for="IsFeatured" class="form-check-input" /> <label>Món nổi bật</label></div>
+    <div class="mb-3">
+        <label>Ảnh sản phẩm</label>
+        <input type="file" name="imageFile" class="form-control" accept="image/*" />
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu</button>
+</form>

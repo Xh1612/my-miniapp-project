@@ -1,0 +1,10 @@
+@model Category
+<h3>Sửa danh mục</h3>
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label>Tên danh mục</label>
+        <input asp-for="Name" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
+</form>
