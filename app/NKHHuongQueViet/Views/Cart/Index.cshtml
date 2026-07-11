@@ -1,0 +1,45 @@
+﻿@model List<CartItem>
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<HuongQueViet.Resources.SharedResources> Localizer
+
+<link rel="stylesheet" href="~/css/theme.css" />
+<link rel="stylesheet" href="~/css/cart.css" />
+<div class="cart-wrapper">
+    <div class="cart-header">
+        <h1>@Localizer["CartTitle"]</h1>
+        <span>@Localizer["CartItemsCount", Model.Count]</span>
+    </div>
+    @if (!Model.Any())
+    {
+        <div class="cart-empty">
+            <p>@Localizer["CartEmpty"]</p>
+            <a asp-controller="Menu" asp-action="Index">@Localizer["ViewMenuLink"]</a>
+        </div>
+    }
+    else
+    {
+        <div class="cart-list">
+            @foreach (var item in Model)
+            {
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <span class="cart-item-name">@item.ProductName</span>
+                        <span class="cart-item-qty">@Localizer["CartQuantity", item.Quantity]</span>
+                    </div>
+                    <div class="cart-item-right">
+                        <span class="cart-item-price">@item.SubTotal.ToString("N0") đ</span>
+                        <form method="post" asp-action="Remove" asp-controller="Cart">
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <button type="submit" class="btn-remove">@Localizer["CartRemove"]</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="cart-summary">
+            <span class="cart-summary-label">@Localizer["CartSubtotal"]</span>
+            <span class="cart-summary-total">@Model.Sum(i => i.SubTotal).ToString("N0") đ</span>
+        </div>
+        <a asp-controller="Orders" asp-action="Checkout" class="btn-dau cart-checkout">@Localizer["CartCheckout"]</a>
+    }
+</div>

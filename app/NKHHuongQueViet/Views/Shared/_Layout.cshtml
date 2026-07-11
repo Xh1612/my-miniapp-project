@@ -1,0 +1,186 @@
+﻿@using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Http
+@using System.Text.Json
+@using HuongQueViet.Models
+@inject IStringLocalizer<HuongQueViet.Resources.SharedResources> Localizer
+
+@{
+    // Đọc số lượng sản phẩm thực tế từ Session ngay khi Server render trang
+    int initialCartCount = 0;
+    var cartSessionJson = Context.Session.GetString("Cart");
+    if (!string.IsNullOrEmpty(cartSessionJson))
+    {
+        try
+        {
+            var cartItems = JsonSerializer.Deserialize<List<CartItem>>(cartSessionJson);
+            initialCartCount = cartItems?.Sum(i => i.Quantity) ?? 0;
+        }
+        catch { }
+    }
+
+    // Kiểm tra xem URL hiện tại có chứa đoạn đường dẫn trang Account Manage hay không
+    var currentPath = Context.Request.Path.Value ?? "";
+    bool isManagePage = currentPath.Contains("/Identity/Account/Manage", StringComparison.OrdinalIgnoreCase);
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HuongQueViet</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HuongQueViet.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fraunces:wght@600;700;900&display=swap" rel="stylesheet">
+    <link href="~/css/theme.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/theme.css" asp-append-version="true" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="~/images/logo.png" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body class="d-flex flex-column min-vh-100" style="position: relative;">
+    <header class="vung-toi">
+        <nav class="navbar-hqv d-flex align-items-center justify-content-between">
+            <!-- Logo & Thương hiệu -->
+            <a class="logo d-flex align-items-center gap-2 text-decoration-none" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/images/logo.png" alt="Logo" style="height: 38px; width: auto; object-fit: contain;" />
+                <span>Hương Quê Việt</span>
+            </a>
+            <div class="nav-links">
+                <a asp-area="" asp-controller="Menu" asp-action="Index">@Localizer["Menu"]</a>
+                <vc:cart-summary></vc:cart-summary>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <a asp-area="" asp-controller="Orders" asp-action="Index">@Localizer["MyOrders"]</a>
+                    <a asp-area="" asp-controller="Addresses" asp-action="Index">@Localizer["Address"]</a>
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index">@Localizer["Account"]</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-area="Admin" asp-controller="Staff" asp-action="Index">@Localizer["Admin"]</a>
+                    }
+                    else if (User.IsInRole("Staff"))
+                    {
+                        <a asp-area="Admin" asp-controller="Staff" asp-action="Index">@Localizer["StaffOrders"]</a>
+                    }
+                    else if (User.IsInRole("Shipper"))
+                    {
+                        <a asp-area="Admin" asp-controller="Shipper" asp-action="Index">@Localizer["ShipperOrders"]</a>
+                    }
+                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" style="display:inline">
+                        <button type="submit" class="btn-dau" style="padding:0.4rem 1rem; font-size:0.8rem; margin-left:0.5rem;">
+                            @Localizer["Logout"]
+                        </button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-area="Identity" asp-page="/Account/Login">@Localizer["Login"]</a>
+                }
+                <form asp-controller="Culture" asp-action="SetCulture" asp-route-returnUrl="@Context.Request.Path"
+                      method="post" class="d-inline ms-3">
+                    <select name="culture" onchange="this.form.submit()"
+                            class="form-select form-select-sm d-inline-block w-auto"
+                            style="padding: 0.3rem 2rem 0.3rem 0.8rem; border-radius: 4px; min-width: 120px;">
+                        <option value="vi" selected="@(System.Globalization.CultureInfo.CurrentUICulture.Name.StartsWith("vi"))">Tiếng Việt</option>
+                        <option value="en" selected="@(System.Globalization.CultureInfo.CurrentUICulture.Name.StartsWith("en"))">English</option>
+                    </select>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <main class="flex-grow-1">@RenderBody()</main>
+
+    @if (!isManagePage)
+    {
+        <!-- Nút Giỏ Hàng Nổi (Floating Cart) -->
+        <a asp-controller="Cart" asp-action="Index" id="floating-cart-btn" style="position: fixed; bottom: 35px; right: 35px; z-index: 9999; background-color: #8B1E10; color: #fff; width: 62px; height: 62px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,0.35); text-decoration: none; transition: transform 0.2s ease, background-color 0.2s ease;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span id="floating-cart-badge" style="position: absolute; top: -4px; right: -4px; background: #FFC107; color: #111; font-weight: 700; border-radius: 50%; width: 24px; height: 24px; font-size: 13px; display: flex; align-items: center; justify-content: center; border: 2px solid #8B1E10;">
+                @initialCartCount
+            </span>
+        </a>
+    }
+
+    <style>
+        #floating-cart-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            background-color: #A32314 !important;
+        }
+    </style>
+
+    <footer class="vung-toi mt-auto" style="padding: 2.5rem 2rem; text-align:center; margin-top: 4rem;">
+        <p style="font-family:'Fraunces',serif; font-size:1.2rem;">Hương Quê Việt</p>
+        <p style="opacity:0.7; font-size:0.85rem;">@Localizer["FooterSlogan"] — © 2026</p>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Script xử lý Ajax cho Nút Giỏ Hàng Nổi -->
+    <script>
+        // Hàm cập nhật Badge trên giao diện và ghi đè localStorage
+        window.updateCartBadge = function (count) {
+            let badge = document.getElementById("floating-cart-badge");
+            if (badge) {
+                let validCount = Math.max(0, parseInt(count) || 0);
+                badge.innerText = validCount;
+                localStorage.setItem("cartCount", validCount);
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Đồng bộ localStorage bằng số lượng chuẩn từ Session do Razor render
+            localStorage.setItem("cartCount", "@initialCartCount");
+
+            // Bắt sự kiện bấm nút "Thêm vào giỏ" trên toàn bộ trang
+            document.addEventListener("submit", function (e) {
+                let form = e.target;
+                if (!form || !form.action) return;
+
+                let action = form.action.toLowerCase();
+
+                if (action.includes("cart/add")) {
+                    e.preventDefault();
+
+                    // Đọc số lượng nhập từ form (nếu có input quantity, mặc định là 1)
+                    let qtyInput = form.querySelector('input[name="quantity"]');
+                    let addedQty = qtyInput ? (parseInt(qtyInput.value) || 1) : 1;
+
+                    fetch(form.action, {
+                        method: form.method || "POST",
+                        body: new FormData(form)
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            let badge = document.getElementById("floating-cart-badge");
+                            let current = parseInt(badge ? badge.innerText : 0) || 0;
+
+                            // Cập nhật tăng số lượng tức thì
+                            window.updateCartBadge(current + addedQty);
+
+                            // Hiệu ứng nhún nút giỏ hàng
+                            let cartBtn = document.getElementById("floating-cart-btn");
+                            if (cartBtn) {
+                                cartBtn.style.transform = "scale(1.25)";
+                                setTimeout(() => { cartBtn.style.transform = "scale(1)"; }, 200);
+                            }
+                        } else {
+                            form.submit();
+                        }
+                    })
+                    .catch(() => form.submit());
+                }
+            });
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

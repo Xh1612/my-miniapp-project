@@ -1,0 +1,45 @@
+﻿@model List<Product>
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<HuongQueViet.Resources.SharedResources> Localizer
+@{
+    ViewData["Title"] = Localizer["MenuTitle"];
+}
+<section class="dau-trang-menu">
+    <div class="noi-dung-dau-trang">
+        <h1 class="tieu-de-menu">@Localizer["MenuTitle"]</h1>
+        <p class="gioi-thieu-menu">@Localizer["MenuIntro"]</p>
+    </div>
+</section>
+<section class="khu-noi-dung">
+    <form method="get" class="thanh-tim-mon">
+        <input type="text" name="keyword" value="@ViewBag.Keyword" placeholder="@Localizer["SearchPlaceholder"]" class="o-tim" />
+        <button type="submit" class="btn-dau btn-tim">@Localizer["SearchButton"]</button>
+        <a asp-action="AdvancedSearch" class="btn-dau btn-nang-cao">@Localizer["AdvancedSearchLink"]</a>
+    </form>
+    <div class="the-loc-danh-muc">
+        <a asp-action="Index" class="the-danh-muc @(ViewBag.CategoryId == null ? "dang-chon" : "")">@Localizer["CategoryAll"]</a>
+        @foreach (var c in (List<Category>)ViewBag.Categories)
+        {
+            <a asp-action="Index" asp-route-categoryId="@c.Id"
+               class="the-danh-muc @(ViewBag.CategoryId == c.Id ? "dang-chon" : "")">@c.Name</a>
+        }
+    </div>
+    @if (Model.Any())
+    {
+        <p class="dem-so-mon">@Localizer["ProductsFoundCount", Model.Count]</p>
+        <div class="luoi-mon">
+            @foreach (var p in Model)
+            {
+                <partial name="_ProductCard" model="p" />
+            }
+        </div>
+    }
+    else
+    {
+        <div class="trang-thai-rong">
+            <p class="trang-thai-rong-tieu-de">@Localizer["EmptyStateTitle"]</p>
+            <p class="trang-thai-rong-mo-ta">@Localizer["EmptyStateDesc"]</p>
+            <a asp-action="Index" class="btn-dau">@Localizer["ViewAllDishes"]</a>
+        </div>
+    }
+</section>
