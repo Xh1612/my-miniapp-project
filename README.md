@@ -29,7 +29,7 @@ ASP.NET Core MVC (.NET 8) · Entity Framework Core (Code First) · SQL Server ·
    dotnet run
    ```
    hoặc nhấn F5 trong Visual Studio.
-6. Sau khi đăng ký tài khoản đầu tiên, gán quyền Admin bằng tay qua SQL (chưa có giao diện "tạo Admin đầu tiên" vì lý do bảo mật hiển nhiên — trang quản lý người dùng yêu cầu đã là Admin mới vào được):
+6. Sau khi đăng ký tài khoản đầu tiên, tiến hành gán quyền Admin thủ công thông qua câu lệnh SQL bên dưới (tính năng khởi tạo tài khoản quản trị viên đầu tiên được ẩn để đảm bảo an toàn hệ thống, vì phân hệ quản lý người dùng yêu cầu quyền Admin):
    ```sql
    INSERT INTO AspNetUserRoles (UserId, RoleId)
    SELECT u.Id, r.Id FROM AspNetUsers u, AspNetRoles r
@@ -80,8 +80,7 @@ Mỗi Sprint có đủ 4 tài liệu: `sprint-planning.md`, `daily-standups.md`,
 
 ## Ghi chú về hình thức thực hiện
 
-Đồ án được thực hiện bởi **một sinh viên**, đóng đồng thời vai trò Product Owner, Scrum Master và Developer trong nhóm Scrum một-người — mô hình này vẫn giữ nguyên đầy đủ kỷ luật của các sự kiện Scrum (Sprint Planning, Daily Standup, Sprint Review, Sprint Retrospective) để rèn luyện tư duy quản lý dự án theo Agile, dù không có nhiều thành viên phối hợp.
-
+Đồ án được thực hiện bởi nhóm 5 thành viên tuân thủ nghiêm ngặt mô hình Scrum qua 2 Sprint. Cơ cấu nhân sự được phân chia cụ thể: Product Owner (Trưởng nhóm) chịu trách nhiệm quản lý Product Backlog và định hướng sản phẩm; Scrum Master (Phó nhóm) điều phối các sự kiện Scrum và loại bỏ trở ngại; các thành viên còn lại đảm nhận vai trò Developer. Mô hình này giúp nhóm duy trì đầy đủ kỷ luật của các sự kiện Scrum (Sprint Planning, Daily Standup, Sprint Review, Sprint Retrospective) để rèn luyện tư duy quản lý dự án Agile chuyên nghiệp.
 ## Giới hạn hiện tại
 
 - Hỗ trợ một cửa hàng duy nhất, chưa có mô hình đa chi nhánh.
