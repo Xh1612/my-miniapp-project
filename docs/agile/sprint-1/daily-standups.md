@@ -1,53 +1,396 @@
 # Daily Standups — Sprint 1
 
-> Vì team chỉ có 1 thành viên, standup được ghi lại dưới dạng nhật ký cá nhân cuối mỗi ngày làm việc, vẫn theo đúng 3 câu hỏi chuẩn của Scrum để duy trì kỷ luật theo dõi tiến độ và phát hiện sớm điểm nghẽn (blocker).
+## Sprint Information
 
-## Thứ Hai, 16/06/2026
-- **Hôm qua làm gì:** (Ngày đầu Sprint)
-- **Hôm nay làm gì:** Khởi tạo project ASP.NET Core MVC (.NET 8) với Individual Accounts; tạo Area "Admin" và layout quản trị riêng.
-- **Khó khăn/Blocker:** Không có.
+- **Project:** Hương Quê Việt
+- **Sprint:** Sprint 1
+- **Thời gian:** 15/07/2026 – 29/07/2026
+- **Số thành viên:** 6
 
-## Thứ Ba, 17/06/2026
-- **Hôm qua làm gì:** Setup project + Area Admin.
-- **Hôm nay làm gì:** Thiết kế Model (ApplicationUser, Category, Product, Order, OrderItem), tạo DbContext, chạy Migration đầu tiên, seed dữ liệu mẫu qua HasData.
-- **Khó khăn/Blocker:** Không có — quyết định seed sẵn dữ liệu mẫu ngay trong Migration giúp tiết kiệm thời gian test so với việc gõ tay SQL mỗi lần.
+### Thành viên
 
-## Thứ Tư, 18/06/2026
-- **Hôm qua làm gì:** Model + DbContext + seed data.
-- **Hôm nay làm gì:** Trang chủ (món nổi bật/mới nhất), trang thực đơn với lọc danh mục và tìm kiếm đơn giản.
-- **Khó khăn/Blocker:** Không có.
+1. Huỳnh Đăng Khoa
+2. Nguyễn Phi Hùng
+3. Nguyễn Trọng Nghĩa
+4. Ngô Nhựt Nam
+5. Nguyễn Chí Hoàng
+6. Phạm Thị Hồng Gấm
 
-## Thứ Năm, 19/06/2026
-- **Hôm qua làm gì:** Trang chủ + thực đơn + tìm kiếm.
-- **Hôm nay làm gì:** Tìm kiếm nâng cao; trang chi tiết sản phẩm kèm đánh giá.
-- **Khó khăn/Blocker:** Gặp lỗi `InvalidOperationException: No service for type UserManager<IdentityUser>` khi chạy F5 — nguyên nhân do file `_LoginPartial.cshtml` mặc định vẫn tham chiếu kiểu `IdentityUser` gốc trong khi `Program.cs` đã đổi sang `ApplicationUser` tùy biến. Đã sửa bằng cách cập nhật lại 2 dòng `@inject` trong `_LoginPartial.cshtml`. **Bài học:** cần rà lại toàn bộ file do Identity tự sinh mỗi khi đổi kiểu User tùy biến.
+---
 
-## Thứ Sáu, 20/06/2026
-- **Hôm qua làm gì:** Fix lỗi UserManager, hoàn thành trang chi tiết sản phẩm + đánh giá.
-- **Hôm nay làm gì:** Giỏ hàng (Session-based) và View Component hiển thị số lượng trên Navbar.
-- **Khó khăn/Blocker:** Không có — đây là lần đầu dùng View Component, mất thêm thời gian đọc tài liệu để hiểu đúng khác biệt so với Partial View trước khi cài đặt.
+## Thứ Tư, 15/07/2026
 
-## Thứ Hai, 23/06/2026
-- **Hôm qua làm gì:** Giỏ hàng + View Component.
-- **Hôm nay làm gì:** Chức năng quản lý địa chỉ giao hàng, cài đặt công thức Haversine tính khoảng cách.
-- **Khó khăn/Blocker:** Sau khi bấm "Lưu địa chỉ", gặp lỗi `View 'Index' was not found` — do quên tạo file `Views/Addresses/Index.cshtml` dù Controller đã có action `Index()` hoàn chỉnh. Bổ sung file View còn thiếu, lỗi hết ngay. **Bài học:** viết Controller xong cần rà lại đủ toàn bộ action có action nào thiếu View tương ứng hay chưa trước khi chuyển việc khác.
+### Huỳnh Đăng Khoa
 
-## Thứ Ba, 24/06/2026
-- **Hôm qua làm gì:** Địa chỉ giao hàng + Haversine.
-- **Hôm nay làm gì:** Action đặt hàng (Checkout) có transaction kiểm tra và trừ tồn kho.
-- **Khó khăn/Blocker:** Khi test đặt hàng bị lỗi `InvalidOperationException: This SqlTransaction has completed; it is no longer usable` — mất khá nhiều thời gian mới nhận ra đây chỉ là lỗi **thứ cấp** (transaction tự đóng do lỗi gốc phía trước, rồi lệnh `RollbackAsync()` gọi lại vào transaction đã đóng gây lỗi chồng lỗi), che mất thông báo lỗi thật sự. Bọc `RollbackAsync()` trong khối try/catch riêng để không nuốt mất lỗi gốc, đồng thời hiển thị lỗi thật ra giao diện qua TempData. **Bài học quan trọng:** thông báo lỗi hiển thị đầu tiên không phải lúc nào cũng là nguyên nhân gốc — cần luôn truy ngược chuỗi exception.
+- **Hôm qua:** Bắt đầu Sprint, thống nhất Sprint Goal và phạm vi công việc.
+- **Hôm nay:**
+  1. Thiết kế Header và Navigation cho website.
+  2. Xây dựng layout tổng thể trang chủ.
+  3. Thiết kế khu vực món ăn nổi bật.
+- **Blockers:** Không có.
 
-## Thứ Tư, 25/06/2026
-- **Hôm qua làm gì:** Fix lỗi transaction, hoàn thiện action Checkout.
-- **Hôm nay làm gì:** Cài đặt `OrderStatusMachine` kiểm soát chuyển trạng thái đơn hàng; bắt đầu `StaffController` và `ShipperController`.
-- **Khó khăn/Blocker:** Không có.
+### Nguyễn Phi Hùng
 
-## Thứ Năm, 26/06/2026
-- **Hôm qua làm gì:** OrderStatusMachine + Staff/Shipper Controller.
-- **Hôm nay làm gì:** Hoàn thiện View cho Staff/Shipper; test đăng nhập đa vai trò.
-- **Khó khăn/Blocker:** Vào `/Admin/Staff` thấy đúng navbar nhưng toàn bộ liên kết bấm không phản ứng gì. Nguyên nhân: `Areas/Admin/Views/` chưa có file `_ViewImports.cshtml` riêng, khiến Tag Helper (`asp-controller`, `asp-action`...) không được kích hoạt trong Area — file `_ViewImports.cshtml` ở `Views/` gốc không tự áp dụng sang nhánh thư mục Area khác. Bổ sung `_ViewImports.cshtml` cho đúng thư mục Area, lỗi hết ngay. **Bài học:** Area là một nhánh thư mục độc lập gần như hoàn toàn — mọi file cấu hình cấp thư mục (`_ViewStart`, `_ViewImports`) đều cần có bản riêng, không kế thừa từ gốc.
+- **Hôm qua:** Tham gia Sprint Planning và nhận nhiệm vụ Authentication.
+- **Hôm nay:**
+  1. Cấu hình ASP.NET Core Identity.
+  2. Thiết lập chức năng đăng ký tài khoản.
+  3. Thiết lập chức năng đăng nhập.
+- **Blockers:** Không có.
 
-## Thứ Sáu, 27/06/2026 (Ngày cuối Sprint)
-- **Hôm qua làm gì:** Fix lỗi Tag Helper trong Area.
-- **Hôm nay làm gì:** Kiểm thử toàn bộ luồng end-to-end (khách đặt hàng → Staff xác nhận → Shipper giao); dọn dẹp code, chuẩn bị Sprint Review.
-- **Khó khăn/Blocker:** Không có — mọi task trong Sprint Backlog đã hoàn thành đúng hạn.
+### Nguyễn Trọng Nghĩa
+
+- **Hôm qua:** Tham gia thống nhất cấu trúc Database cho Sprint 1.
+- **Hôm nay:**
+  1. Xây dựng Model Category.
+  2. Xây dựng Model Product.
+  3. Thiết lập quan hệ Category - Product.
+- **Blockers:** Không có.
+
+---
+
+## Thứ Năm, 16/07/2026
+
+### Huỳnh Đăng Khoa
+
+- **Hôm qua:** Đã xây dựng Header, Navigation và layout cơ bản của trang chủ.
+- **Hôm nay:**
+  1. Hoàn thiện Hero Section của trang chủ.
+  2. Thiết kế khu vực món ăn mới nhất.
+  3. Điều chỉnh Responsive cho trang chủ.
+- **Blockers:** Không có.
+
+### Nguyễn Phi Hùng
+
+- **Hôm qua:** Đã cấu hình Identity và tạo chức năng đăng ký, đăng nhập.
+- **Hôm nay:**
+  1. Thiết lập Authorization cho các Role.
+  2. Tạo Area Admin.
+  3. Tạo Admin Dashboard cơ bản.
+- **Blockers:** Gặp lỗi `UserManager<IdentityUser>` do một số View vẫn sử dụng `IdentityUser` thay vì `ApplicationUser`.
+
+### Nguyễn Trọng Nghĩa
+
+- **Hôm qua:** Đã xây dựng Category và Product Model.
+- **Hôm nay:**
+  1. Xây dựng Model Order.
+  2. Xây dựng Model OrderItem.
+  3. Thiết lập quan hệ Order - OrderItem.
+- **Blockers:** Không có.
+
+### Nguyễn Chí Hoàng
+
+- **Hôm qua:** Nhận nhiệm vụ phát triển chức năng Menu.
+- **Hôm nay:**
+  1. Xây dựng trang Menu.
+  2. Hiển thị danh sách món ăn.
+  3. Hiển thị danh sách Category.
+- **Blockers:** Không có.
+
+---
+
+## Thứ Sáu, 17/07/2026
+
+### Nguyễn Phi Hùng
+
+- **Hôm qua:** Đã thiết lập Authorization và tạo Admin Area.
+- **Hôm nay:**
+  1. Hoàn thiện Admin Dashboard.
+  2. Thiết lập quyền truy cập khu vực Admin.
+  3. Kiểm tra luồng đăng nhập theo Role.
+- **Blockers:** Đã xử lý lỗi `UserManager<IdentityUser>` bằng cách chuyển sang `ApplicationUser`.
+
+### Nguyễn Trọng Nghĩa
+
+- **Hôm qua:** Đã xây dựng Order và OrderItem.
+- **Hôm nay:**
+  1. Cấu hình ApplicationDbContext.
+  2. Tạo Migration đầu tiên.
+  3. Seed dữ liệu Category và Product.
+- **Blockers:** Không có.
+
+### Nguyễn Chí Hoàng
+
+- **Hôm qua:** Đã xây dựng trang Menu và hiển thị Category.
+- **Hôm nay:**
+  1. Xây dựng chức năng lọc món theo Category.
+  2. Tạo chức năng tìm kiếm món theo tên.
+  3. Kiểm tra kết quả tìm kiếm và lọc.
+- **Blockers:** Không có.
+
+---
+
+## Thứ Hai, 20/07/2026
+
+### Huỳnh Đăng Khoa
+
+- **Hôm qua:** Đã hoàn thiện trang chủ và Responsive cơ bản.
+- **Hôm nay:**
+  1. Thiết kế giao diện Product Detail.
+  2. Hiển thị hình ảnh và thông tin món ăn.
+  3. Thiết kế khu vực giá và nút thêm vào giỏ hàng.
+- **Blockers:** Không có.
+
+### Nguyễn Phi Hùng
+
+- **Hôm qua:** Đã hoàn thiện Admin Dashboard và phân quyền.
+- **Hôm nay:**
+  1. Xây dựng tìm kiếm nâng cao theo giá.
+  2. Thêm bộ lọc theo Category.
+  3. Thêm bộ lọc theo mức độ cay.
+- **Blockers:** Không có.
+
+### Ngô Nhựt Nam
+
+- **Hôm qua:** Đã hoàn thiện phần Database và Seed Data.
+- **Hôm nay:**
+  1. Xây dựng Model Address.
+  2. Tạo chức năng thêm địa chỉ giao hàng.
+  3. Xây dựng chức năng chọn địa chỉ mặc định.
+- **Blockers:** Không có.
+
+---
+
+## Thứ Ba, 21/07/2026
+
+### Huỳnh Đăng Khoa
+
+- **Hôm qua:** Đã xây dựng giao diện Product Detail và khu vực thông tin món ăn.
+- **Hôm nay:**
+  1. Hoàn thiện Responsive cho Product Detail.
+  2. Thiết kế khu vực đánh giá món ăn.
+  3. Điều chỉnh giao diện nút Add to Cart.
+- **Blockers:** Không có.
+
+### Nguyễn Trọng Nghĩa
+
+- **Hôm qua:** Đã hoàn thiện Database Model và Seed Data.
+- **Hôm nay:**
+  1. Xây dựng Model Review.
+  2. Tạo chức năng lưu đánh giá.
+  3. Thiết lập quan hệ Review - Product.
+- **Blockers:** Không có.
+
+### Ngô Nhựt Nam
+
+- **Hôm qua:** Đã tạo Address Model và chức năng thêm địa chỉ.
+- **Hôm nay:**
+  1. Xây dựng chức năng sửa địa chỉ.
+  2. Xây dựng chức năng xóa địa chỉ.
+  3. Hiển thị danh sách địa chỉ của người dùng.
+- **Blockers:** Không có.
+
+---
+
+## Thứ Tư, 22/07/2026
+
+### Nguyễn Chí Hoàng
+
+- **Hôm qua:** Đã hoàn thiện tìm kiếm, lọc Category và kiểm tra Menu.
+- **Hôm nay:**
+  1. Liên kết Menu với Product Detail.
+  2. Xử lý chức năng Add to Cart từ Product Detail.
+  3. Kiểm tra luồng Menu → Product Detail → Cart.
+- **Blockers:** Không có.
+
+### Phạm Thị Hồng Gấm
+
+- **Hôm qua:** Chuẩn bị cấu trúc giao diện Cart.
+- **Hôm nay:**
+  1. Thiết kế giao diện Cart.
+  2. Hiển thị danh sách sản phẩm trong Cart.
+  3. Xử lý tăng và giảm số lượng sản phẩm.
+- **Blockers:** Không có.
+
+### Nguyễn Trọng Nghĩa
+
+- **Hôm qua:** Đã xây dựng Review Model và chức năng lưu đánh giá.
+- **Hôm nay:**
+  1. Hoàn thiện logic kiểm tra Review.
+  2. Kiểm tra dữ liệu Review trong Database.
+  3. Tích hợp Review vào Product Detail.
+- **Blockers:** Không có.
+
+---
+
+## Thứ Năm, 23/07/2026
+
+### Phạm Thị Hồng Gấm
+
+- **Hôm qua:** Đã xây dựng Cart UI và xử lý thay đổi số lượng.
+- **Hôm nay:**
+  1. Xử lý xóa sản phẩm khỏi Cart.
+  2. Tính tổng tiền Cart.
+  3. Hiển thị số lượng sản phẩm trên Navbar.
+- **Blockers:** Không có.
+
+### Nguyễn Trọng Nghĩa
+
+- **Hôm qua:** Đã hoàn thiện Review và tích hợp vào Product Detail.
+- **Hôm nay:**
+  1. Xây dựng chức năng Checkout.
+  2. Tạo Order và OrderItem từ Cart.
+  3. Thiết lập transaction khi tạo Order.
+- **Blockers:** Khi test Checkout xuất hiện lỗi `This SqlTransaction has completed; it is no longer usable`.
+
+### Ngô Nhựt Nam
+
+- **Hôm qua:** Đã hoàn thiện chức năng quản lý địa chỉ.
+- **Hôm nay:**
+  1. Cài đặt công thức Haversine.
+  2. Tính khoảng cách giữa địa chỉ giao hàng và điểm xuất phát.
+  3. Xây dựng logic tính phí giao hàng.
+- **Blockers:** Không có.
+
+---
+
+## Thứ Sáu, 24/07/2026
+
+### Nguyễn Trọng Nghĩa
+
+- **Hôm qua:** Đã xây dựng Checkout và phát hiện lỗi Transaction.
+- **Hôm nay:**
+  1. Xử lý lỗi Transaction khi Checkout.
+  2. Kiểm tra việc tạo Order và OrderItem.
+  3. Kiểm tra cập nhật tồn kho sau khi đặt hàng.
+- **Blockers:** Đã xác định lỗi Rollback được gọi trên Transaction đã hoàn thành và tiến hành điều chỉnh xử lý Exception.
+
+### Phạm Thị Hồng Gấm
+
+- **Hôm qua:** Đã hoàn thiện Cart và tổng tiền.
+- **Hôm nay:**
+  1. Thiết kế giao diện Checkout.
+  2. Hiển thị thông tin địa chỉ giao hàng.
+  3. Hiển thị tổng tiền và phí giao hàng.
+- **Blockers:** Không có.
+
+### Nguyễn Phi Hùng
+
+- **Hôm qua:** Đã hoàn thiện Advanced Search.
+- **Hôm nay:**
+  1. Xây dựng OrderStatusMachine.
+  2. Khai báo các trạng thái của Order.
+  3. Kiểm tra điều kiện chuyển trạng thái.
+- **Blockers:** Không có.
+
+---
+
+## Thứ Hai, 27/07/2026
+
+### Phạm Thị Hồng Gấm
+
+- **Hôm qua:** Đã hoàn thiện giao diện Checkout.
+- **Hôm nay:**
+  1. Thiết kế giao diện Kitchen.
+  2. Hiển thị danh sách đơn hàng mới.
+  3. Tạo thao tác tiếp nhận đơn hàng cho Staff.
+- **Blockers:** Không có.
+
+### Ngô Nhựt Nam
+
+- **Hôm qua:** Đã hoàn thiện tính khoảng cách và phí giao hàng.
+- **Hôm nay:**
+  1. Xây dựng Shipper Controller.
+  2. Hiển thị danh sách đơn hàng sẵn sàng giao.
+  3. Xử lý cập nhật trạng thái giao hàng.
+- **Blockers:** Không có.
+
+### Nguyễn Chí Hoàng
+
+- **Hôm qua:** Đã hoàn thiện luồng Menu → Product Detail → Cart.
+- **Hôm nay:**
+  1. Xây dựng chức năng hủy đơn hàng.
+  2. Kiểm tra điều kiện được phép hủy đơn.
+  3. Cập nhật trạng thái đơn sau khi hủy.
+- **Blockers:** Không có.
+
+---
+
+## Thứ Ba, 28/07/2026
+
+### Huỳnh Đăng Khoa
+
+- **Hôm qua:** Đã hoàn thiện các giao diện chính của Customer.
+- **Hôm nay:**
+  1. Kiểm tra Responsive toàn bộ Customer UI.
+  2. Sửa lỗi khoảng cách và kích thước các thành phần.
+  3. Đồng bộ giao diện giữa Menu, Cart và Checkout.
+- **Blockers:** Một số thành phần cần điều chỉnh lại trên màn hình nhỏ.
+
+### Nguyễn Phi Hùng
+
+- **Hôm qua:** Đã hoàn thiện OrderStatusMachine.
+- **Hôm nay:**
+  1. Kiểm tra Authorization của Customer, Staff và Shipper.
+  2. Kiểm tra các trạng thái của Order.
+  3. Hỗ trợ xử lý lỗi Backend còn lại.
+- **Blockers:** Không có.
+
+### Nguyễn Trọng Nghĩa
+
+- **Hôm qua:** Đã xử lý lỗi Transaction và kiểm tra Checkout.
+- **Hôm nay:**
+  1. Kiểm tra tính toàn vẹn dữ liệu Order.
+  2. Kiểm tra quan hệ Order - OrderItem.
+  3. Kiểm tra tồn kho sau Checkout.
+- **Blockers:** Không có.
+
+### Ngô Nhựt Nam
+
+- **Hôm qua:** Đã hoàn thiện Shipper Controller và cập nhật trạng thái giao hàng.
+- **Hôm nay:**
+  1. Kiểm tra chức năng Address.
+  2. Kiểm tra công thức Delivery Fee.
+  3. Kiểm tra luồng Shipper nhận và giao đơn.
+- **Blockers:** Không có.
+
+---
+
+## Thứ Tư, 29/07/2026
+
+### Huỳnh Đăng Khoa
+
+- **Hôm qua:** Đã kiểm tra Responsive và sửa các lỗi giao diện.
+- **Hôm nay:**
+  1. Chuẩn bị giao diện cho Sprint Review.
+  2. Kiểm tra lại các màn hình Customer chính.
+  3. Chuẩn bị Demo luồng đặt món.
+- **Blockers:** Không có.
+
+### Nguyễn Phi Hùng
+
+- **Hôm qua:** Đã kiểm tra Authorization và Order Status.
+- **Hôm nay:**
+  1. Kiểm tra lại Authentication.
+  2. Kiểm tra quyền truy cập Admin, Staff và Shipper.
+  3. Chuẩn bị phần Backend cho Sprint Review.
+- **Blockers:** Không có.
+
+### Nguyễn Chí Hoàng
+
+- **Hôm qua:** Đã hoàn thiện chức năng hủy đơn.
+- **Hôm nay:**
+  1. Kiểm tra lại Menu và Search.
+  2. Kiểm tra lại Cart.
+  3. Chuẩn bị luồng Customer Demo.
+- **Blockers:** Không có.
+
+### Phạm Thị Hồng Gấm
+
+- **Hôm qua:** Đã hoàn thiện Kitchen UI và luồng tiếp nhận đơn.
+- **Hôm nay:**
+  1. Kiểm tra giao diện Kitchen.
+  2. Kiểm tra hiển thị đơn hàng mới.
+  3. Chuẩn bị phần Staff Demo.
+- **Blockers:** Không có.
+
+---
+
+# Ghi chú Sprint
+
+- Ngày 18/07/2026 và 19/07/2026 là Thứ Bảy và Chủ Nhật nên không ghi Daily Standup.
+- Ngày 25/07/2026 và 26/07/2026 là Thứ Bảy và Chủ Nhật nên không ghi Daily Standup.
+- Không yêu cầu cả 6 thành viên phải tham gia Daily Standup mỗi ngày.
+- Thành viên xuất hiện trong ngày nào thì ngày đó có đúng 3 task được giao.
+- Task của các thành viên trong cùng một ngày được phân chia riêng, tránh ghi trùng một công việc cho nhiều người.
+- Ngày 29/07/2026 đồng thời là ngày hoàn thiện Sprint và chuẩn bị Sprint Review.
