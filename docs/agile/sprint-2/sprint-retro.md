@@ -1,21 +1,75 @@
 # Sprint Retrospective — Sprint 2
 
-**Ngày:** 11/07/2026
+**Ngày:** 19/08/2026  
+**Sprint:** Sprint 2  
+**Thành viên:** Huỳnh Đăng Khoa, Nguyễn Phi Hùng, Nguyễn Trọng Nghĩa, Ngô Nhựt Nam, Nguyễn Chí Hoàng, Phạm Thị Hồng Gấm
+
+---
 
 ## 😀 Điều đã làm tốt (What went well)
 
-- Chủ động đăng ký tài khoản Sandbox VNPay ngay từ ngày đầu Sprint (biết trước đây là phụ thuộc bên ngoài có độ trễ phản hồi khó kiểm soát) giúp không bị chặn tiến độ ở giữa Sprint.
-- Cách tiếp cận "thêm JWT như một lựa chọn xác thực song song, không thay thế cơ chế cookie mặc định" giúp tích hợp tính năng mới mà zero rủi ro phá vỡ toàn bộ hệ thống đã hoạt động ổn định từ Sprint 1 — đây là một quyết định kỹ thuật quan trọng, thể hiện tư duy "mở rộng an toàn" thay vì "sửa đổi rủi ro".
-- Việc tách các nghiệp vụ phức tạp thành Service riêng (CouponService, VnPayService, NotificationService) từ Sprint 1 giúp Sprint 2 bổ sung tính năng mới rất nhanh, ít đụng chạm code cũ.
+- Hoàn thiện và mở rộng các chức năng trên nền tảng đã xây dựng từ Sprint 1 thay vì phải xây dựng lại các module cốt lõi.
+- Việc tách các nghiệp vụ phức tạp thành các Service riêng như `CouponService`, `VnPayService` và `NotificationService` giúp việc tích hợp các tính năng mới dễ quản lý và hạn chế ảnh hưởng đến các chức năng cũ.
+- Tích hợp VNPay Sandbox vào luồng thanh toán hiện có, giúp hệ thống hỗ trợ thêm hình thức thanh toán trực tuyến bên cạnh COD.
+- Bổ sung SignalR để cập nhật trạng thái đơn hàng theo thời gian thực, giúp luồng xử lý giữa Customer, Staff và Shipper rõ ràng hơn.
+- Hoàn thiện các chức năng quản trị như Category CRUD, Product CRUD, User Management và Dashboard thống kê.
+- Bổ sung quản lý nguyên liệu và tồn kho, giúp hệ thống phù hợp hơn với nghiệp vụ của website bán món ăn.
+- Việc bổ sung Unit Test cho `CouponService` và `OrderStatusMachine` giúp kiểm tra lại các nghiệp vụ quan trọng và hạn chế lỗi khi thay đổi code.
+- Nhóm đã chủ động kiểm tra và sửa các lỗi phát sinh trong quá trình tích hợp, đặc biệt là lỗi liên quan đến Service, Notification và xác thực JWT.
+- Daily Standup được sử dụng để theo dõi tiến độ, xác định blocker và phân chia công việc cụ thể cho từng thành viên.
+
+---
 
 ## 😕 Điều chưa tốt (What didn't go well)
 
-- Xảy ra 2 lần lỗi liên quan đến việc "quên đồng bộ code khi làm theo nhiều bước hướng dẫn liên tiếp" (thiếu Service khiến build lỗi; dán trùng code thông báo 2 lần) — cho thấy cần chậm lại và đọc kỹ toàn bộ đoạn code hiện có trước khi chỉnh sửa, thay vì chỉ dán thêm theo quán tính.
-- Khối lượng công việc Sprint 2 ước lượng hơi thấp so với thực tế — nhiều task như tích hợp VNPay và thông báo Email/SMS phát sinh thời gian debug nhiều hơn dự kiến ban đầu.
-- Phần Unit Test chỉ kịp viết cho 2 Service quan trọng nhất (CouponService, OrderStatusMachine), chưa bao phủ được các nghiệp vụ khác — nếu có Sprint 3, đây nên là ưu tiên đầu danh sách.
+- Một số task có nhiều thành phần phụ thuộc lẫn nhau nên việc triển khai đôi lúc bị chậm, đặc biệt với các chức năng liên quan đến VNPay, Notification và SignalR.
+- Trong quá trình tích hợp Notification Service, xảy ra lỗi build do thiếu hoặc chưa đăng ký đầy đủ các Service cần thiết. Điều này cho thấy cần kiểm tra đồng bộ giữa Interface, Implementation và Dependency Injection.
+- Có trường hợp code bị trùng hoặc đặt biến trong cùng scope gây lỗi compile. Nhóm cần kiểm tra lại toàn bộ đoạn code hiện có trước khi thêm các phần code mới.
+- Khối lượng công việc của Sprint 2 khá lớn do vừa phát triển tính năng mới vừa phải tích hợp với các chức năng đã hoàn thành ở Sprint 1.
+- Unit Test mới tập trung vào một số Service quan trọng như `CouponService` và `OrderStatusMachine`, chưa bao phủ toàn bộ nghiệp vụ của hệ thống.
+- Việc kiểm tra giao diện trên nhiều màn hình và nhiều luồng sử dụng chưa được thực hiện đầy đủ ngay từ đầu.
+- Một số task cần phối hợp giữa Backend, Database và UI nên đôi lúc việc bàn giao giữa các thành viên chưa thật sự đồng bộ.
 
-## 🎯 Bài học tổng kết toàn dự án (rút ra sau 2 Sprint)
+---
 
-1. Đầu tư đúng vào kiến trúc nền tảng ở Sprint đầu (Area, Service Layer, transaction) mang lại lợi ích rõ rệt về tốc độ phát triển ở Sprint sau — đúng theo tinh thần Agile là ưu tiên giá trị lâu dài hơn tốc độ ngắn hạn.
-2. Phần lớn lỗi phát sinh trong dự án không phải do sai logic phức tạp, mà do **sai sót đồng bộ** giữa các file liên quan khi thay đổi cấu hình hoặc dán code — kỷ luật rà soát lại toàn bộ thay đổi trước khi chuyển sang việc tiếp theo quan trọng không kém việc viết đúng logic.
-3. Ghi nhật ký standup hằng ngày, kể cả khi làm việc một mình, thực sự hữu ích để nhìn lại được bức tranh tổng thể tiến độ và các blocker đã gặp — dữ liệu này sau đó trở thành nguồn tư liệu quý cho phần báo cáo tổng kết đồ án.
+## 🔧 Cần cải thiện (What can be improved)
+
+### 1. Kiểm tra dependency trước khi code
+
+Trước khi thêm một tính năng mới cần xác định rõ:
+
+- Interface nào cần thêm?
+- Service nào cần tạo?
+- Service đã được đăng ký trong `Program.cs` chưa?
+- Controller nào sử dụng Service?
+- View hoặc JavaScript nào phụ thuộc vào chức năng đó?
+
+Điều này giúp hạn chế lỗi build và lỗi runtime khi tích hợp.
+
+### 2. Tăng cường Unit Test
+
+Ở Sprint tiếp theo, nếu có thêm thời gian, nhóm nên mở rộng Unit Test cho:
+
+- Coupon Service
+- Order Service
+- Payment Service
+- Notification Service
+- Order Status Machine
+- Các nghiệp vụ liên quan đến tồn kho
+
+### 3. Kiểm tra tích hợp thường xuyên
+
+Không nên chờ đến cuối Sprint mới tích hợp các module.
+
+Sau khi hoàn thành một chức năng nên kiểm tra ngay:
+
+```text
+Database
+   ↓
+Service
+   ↓
+Controller
+   ↓
+View / API
+   ↓
+User Flow
