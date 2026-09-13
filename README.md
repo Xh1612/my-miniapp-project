@@ -13,76 +13,68 @@ ASP.NET Core MVC (.NET 8) · Entity Framework Core (Code First) · SQL Server ·
 ## Cách cài đặt và chạy
 
 1. Yêu cầu: .NET 8 SDK, SQL Server (LocalDB đủ dùng), Visual Studio 2022 (khuyến nghị) hoặc `dotnet` CLI.
+
 2. Mở thư mục `src/` bằng Visual Studio, hoặc từ dòng lệnh:
-   ```
+
+   ```bash
    cd src
    dotnet restore
-   ```
-3. Cập nhật `src/appsettings.json`: điền `RestaurantLocation`, và nếu muốn test đầy đủ tính năng thanh toán/thông báo, điền thêm `Vnpay` (đăng ký Sandbox tại VNPay) và `Smtp` (đăng ký free tại Mailtrap.io). Không điền cũng chạy được các chức năng còn lại bình thường.
+3. Cập nhật src/appsettings.json: điền RestaurantLocation, và nếu muốn test đầy đủ tính năng thanh toán/thông báo, điền thêm Vnpay (đăng ký Sandbox tại VNPay) và Smtp (đăng ký free tại Mailtrap.io). Không điền cũng chạy được các chức năng còn lại bình thường.
 4. Tạo database:
-   ```
-   dotnet ef database update
-   ```
-   (nếu chưa có `dotnet-ef`, cài qua `dotnet tool install --global dotnet-ef`)
+dotnet ef database update
+(nếu chưa có dotnet-ef, cài qua dotnet tool install --global dotnet-ef)
 5. Chạy ứng dụng:
-   ```
-   dotnet run
-   ```
-   hoặc nhấn F5 trong Visual Studio.
+dotnet run
+hoặc nhấn F5 trong Visual Studio.
 6. Sau khi đăng ký tài khoản đầu tiên, tiến hành gán quyền Admin thủ công thông qua câu lệnh SQL bên dưới (tính năng khởi tạo tài khoản quản trị viên đầu tiên được ẩn để đảm bảo an toàn hệ thống, vì phân hệ quản lý người dùng yêu cầu quyền Admin):
-   ```sql
-   INSERT INTO AspNetUserRoles (UserId, RoleId)
-   SELECT u.Id, r.Id FROM AspNetUsers u, AspNetRoles r
-   WHERE u.Email = '<email của bạn>' AND r.Name = 'Admin';
-   ```
-
-## Chạy Unit Test
-
-```
+INSERT INTO AspNetUserRoles (UserId, RoleId)
+SELECT u.Id, r.Id FROM AspNetUsers u, AspNetRoles r
+WHERE u.Email = '<email của bạn>' AND r.Name = 'Admin';
+Chạy Unit Test
 cd tests
 dotnet test
-```
 
-> Thư mục `tests/` được đặt ngang hàng với `src/` (không lồng bên trong) theo đúng quy ước chuẩn của giải pháp .NET (solution có nhiều project: 1 project chạy được + 1 project test riêng) — đây là điểm điều chỉnh nhỏ so với cây thư mục mẫu ban đầu (vốn thiết kế chung cho các framework JavaScript không có khái niệm project/solution tách biệt).
-
-## Cấu trúc thư mục
-
-```
+Thư mục tests/ được đặt ngang hàng với src/ (không lồng bên trong) theo đúng quy ước chuẩn của giải pháp .NET (solution có nhiều project: 1 project chạy được + 1 project test riêng) — đây là điểm điều chỉnh nhỏ so với cây thư mục mẫu ban đầu (vốn thiết kế chung cho các framework JavaScript không có khái niệm project/solution tách biệt).
+Cấu trúc thư mục
 my-miniapp-project/
-├── .github/              → Template cho Issue (User Story, Bug) và Pull Request
+├── .github/                 → Template cho Issue (User Story, Bug) và Pull Request
 ├── docs/
-│   ├── agile/             → Toàn bộ tài liệu Scrum: Product Backlog, 2 Sprint
+│   ├── agile/               → Toàn bộ tài liệu Scrum: Product Backlog, 2 Sprint
 │   └── architecture/       → Kiến trúc hệ thống, thiết kế cơ sở dữ liệu
-├── src/                   → Mã nguồn chính (ASP.NET Core MVC)
+├── src/                     → Mã nguồn chính (ASP.NET Core MVC)
 │   ├── Areas/Admin/         → Phân hệ quản trị (Controller + View riêng)
 │   ├── Controllers/         → Controller cho khách hàng
-│   ├── Models/               → Entity + ViewModel
-│   ├── Data/                  → DbContext
-│   ├── Services/               → Nghiệp vụ tách riêng (Coupon, VNPay, Notification)
-│   ├── Helpers/                 → Haversine, State Machine, thư viện chữ ký VNPay
-│   ├── Hubs/                     → SignalR
-│   ├── ViewComponents/            → Giỏ hàng mini trên Navbar
-│   ├── Views/                      → Giao diện Razor
-│   └── wwwroot/                     → CSS, ảnh upload
-├── tests/                 → Unit Test (xUnit)
+│   ├── Models/              → Entity + ViewModel
+│   ├── Data/                → DbContext
+│   ├── Services/            → Nghiệp vụ tách riêng (Coupon, VNPay, Notification)
+│   ├── Helpers/             → Haversine, State Machine, thư viện chữ ký VNPay
+│   ├── Hubs/                → SignalR
+│   ├── ViewComponents/      → Giỏ hàng mini trên Navbar
+│   ├── Views/               → Giao diện Razor
+│   └── wwwroot/             → CSS, ảnh upload
+├── tests/                   → Unit Test (xUnit)
 └── README.md
-```
+Quy trình phát triển (Agile/Scrum)
 
-## Quy trình phát triển (Agile/Scrum)
+Dự án được thực hiện qua 2 Sprint, theo đúng các sự kiện Scrum chuẩn:
 
-Dự án được thực hiện qua **2 Sprint, mỗi Sprint 2 tuần**, theo đúng các sự kiện Scrum chuẩn:
+Product Backlog — toàn bộ User Story, ưu tiên theo P0/P1/P2
+Sprint 1 — Nền tảng hệ thống + luồng mua hàng cơ bản
+Sprint 2 — Thanh toán trực tuyến, phân hệ quản trị, tính năng mở rộng
 
-- [Product Backlog](docs/agile/product-backlog.md) — toàn bộ User Story, ưu tiên theo P0/P1/P2
-- [Sprint 1](docs/agile/sprint-1/) — Nền tảng hệ thống + luồng mua hàng cơ bản
-- [Sprint 2](docs/agile/sprint-2/) — Thanh toán trực tuyến, phân hệ quản trị, tính năng mở rộng
+Mỗi Sprint có đủ 4 tài liệu:
 
-Mỗi Sprint có đủ 4 tài liệu: `sprint-planning.md`, `daily-standups.md`, `sprint-review.md`, `sprint-retro.md`.
+sprint-planning.md
+daily-standups.md
+sprint-review.md
+sprint-retro.md
+Ghi chú về hình thức thực hiện
 
-## Ghi chú về hình thức thực hiện
+Đồ án được thực hiện bởi nhóm 6 thành viên, tuân thủ mô hình Scrum qua 2 Sprint. Các thành viên phối hợp thực hiện các User Story được phân công trong từng Sprint và tham gia đầy đủ các sự kiện Scrum gồm Sprint Planning, Daily Standup, Sprint Review và Sprint Retrospective.
 
-Đồ án được thực hiện bởi nhóm 5 thành viên tuân thủ nghiêm ngặt mô hình Scrum qua 2 Sprint. Cơ cấu nhân sự được phân chia cụ thể: Product Owner (Trưởng nhóm) chịu trách nhiệm quản lý Product Backlog và định hướng sản phẩm; Scrum Master (Phó nhóm) điều phối các sự kiện Scrum và loại bỏ trở ngại; các thành viên còn lại đảm nhận vai trò Developer. Mô hình này giúp nhóm duy trì đầy đủ kỷ luật của các sự kiện Scrum (Sprint Planning, Daily Standup, Sprint Review, Sprint Retrospective) để rèn luyện tư duy quản lý dự án Agile chuyên nghiệp.
-## Giới hạn hiện tại
+Mô hình này giúp nhóm duy trì quy trình phát triển có tổ chức, theo dõi tiến độ công việc, phối hợp giữa các thành viên và cải thiện cách làm việc qua từng Sprint theo tinh thần Agile/Scrum.
 
-- Hỗ trợ một cửa hàng duy nhất, chưa có mô hình đa chi nhánh.
-- Gửi SMS ở dạng mô phỏng (ghi log), chưa tích hợp nhà mạng thật.
-- Ảnh sản phẩm lưu trực tiếp trên máy chủ ứng dụng (`wwwroot/uploads`), chưa dùng dịch vụ lưu trữ đám mây.
+Giới hạn hiện tại
+Hỗ trợ một cửa hàng duy nhất, chưa có mô hình đa chi nhánh.
+Gửi SMS ở dạng mô phỏng (ghi log), chưa tích hợp nhà mạng thật.
+Ảnh sản phẩm lưu trực tiếp trên máy chủ ứng dụng (wwwroot/uploads), chưa dùng dịch vụ lưu trữ đám mây.
