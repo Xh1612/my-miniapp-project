@@ -1,37 +1,59 @@
 # Sprint Review — Sprint 1
 
-**Ngày:** 27/06/2026
-**Người tham dự:** Sinh viên thực hiện (Product Owner/Developer), Giảng viên hướng dẫn (đóng vai trò khách hàng góp ý)
+**Ngày:** 29/07/2026
+
+**Sprint:** Sprint 1
+
+**Thời gian Sprint:** 15/07/2026 – 29/07/2026
+
+## Người tham dự
+
+### Nhóm phát triển
+
+| STT | Thành viên | Vai trò chính |
+|---|---|---|
+| 1 | Huỳnh Đăng Khoa | UI/UX, Frontend |
+| 2 | Nguyễn Phi Hùng | Backend, Authentication, Order Flow |
+| 3 | Nguyễn Trọng Nghĩa | Database, Model, Inventory |
+| 4 | Ngô Nhựt Nam | EF Core, Services, Backend Integration |
+| 5 | Nguyễn Chí Hoàng | Product, Menu, Cart, Testing |
+| 6 | Phạm Thị Hồng Gấm | Cart UI, Checkout UI, Staff/Shipper UI |
+
+### Người hướng dẫn
+
+- Giảng viên hướng dẫn
+
+---
 
 ## Sprint Goal đã đạt được?
 
-✅ **Đạt.** Luồng mua hàng end-to-end đã chạy được thật: khách vãng lai xem thực đơn → đăng ký/đăng nhập → thêm giỏ hàng → thêm địa chỉ → đặt hàng (có transaction an toàn) → Nhân viên bếp xác nhận → Shipper nhận và giao. Toàn bộ luồng được demo trực tiếp trong buổi Review.
+✅ **Đạt phần lớn mục tiêu của Sprint 1.**
 
-## Các tính năng đã hoàn thành (Done)
+Trong Sprint 1, nhóm đã xây dựng được nền tảng chính của website đặt món ăn **Hương Quê Việt** bằng ASP.NET Core MVC (.NET 8), đồng thời hoàn thiện được luồng mua hàng cơ bản từ phía khách hàng đến quá trình xử lý đơn hàng.
 
-- Nền tảng project: ASP.NET Core MVC + Identity + Area Admin (US-01, US-02, US-03)
-- Trang chủ, thực đơn, tìm kiếm đơn giản & nâng cao (US-04 → US-07)
-- Chi tiết sản phẩm + đánh giá (US-08)
-- Giỏ hàng + View Component (US-09)
-- Quản lý địa chỉ + tính phí ship tự động (US-10, US-11)
-- Đặt hàng với transaction đảm bảo an toàn tồn kho (US-12)
-- Hủy đơn (US-14)
-- Xử lý đơn cho Nhân viên bếp/Shipper có kiểm soát trạng thái (US-20, US-21, US-22)
+Luồng chính có thể thực hiện:
 
-## Demo trực tiếp
-
-Đã demo trực tiếp trên máy: tạo đơn hàng thành công, thử đặt vượt tồn kho để chứng minh rollback hoạt động đúng, đăng nhập lần lượt 3 vai trò (Customer, Staff, Shipper) để chứng minh mỗi vai trò thấy đúng phần việc của mình.
-
-## Phản hồi từ giảng viên/khách hàng
-
-- Đánh giá cao việc đã có bản chạy được thật ngay từ Sprint đầu tiên thay vì chỉ có tài liệu thiết kế.
-- Góp ý: nên bổ sung xác nhận qua email/SMS để khách yên tâm hơn sau khi đặt hàng — đã ghi nhận vào Backlog cho Sprint 2 (US-17).
-- Góp ý: cân nhắc thêm phương thức thanh toán trực tuyến thay vì chỉ COD — đã có sẵn trong Backlog, ưu tiên cho Sprint 2 (US-16).
-
-## Chưa làm được / Đẩy sang Sprint 2
-
-- Thanh toán trực tuyến (VNPay)
-- Mã giảm giá
-- Toàn bộ phân hệ quản trị (danh mục, sản phẩm, người dùng, nguyên liệu, thống kê)
-- Cập nhật trạng thái theo thời gian thực (hiện tại khách phải tự tải lại trang để thấy trạng thái mới)
-- Giao diện khách hàng vẫn đang dùng Bootstrap mặc định, chưa có bản sắc thương hiệu riêng
+```text
+Đăng ký / Đăng nhập
+        ↓
+Xem trang chủ
+        ↓
+Xem thực đơn
+        ↓
+Tìm kiếm / Lọc món ăn
+        ↓
+Xem chi tiết món ăn
+        ↓
+Thêm vào giỏ hàng
+        ↓
+Chọn địa chỉ giao hàng
+        ↓
+Checkout
+        ↓
+Đặt hàng
+        ↓
+Nhân viên bếp tiếp nhận
+        ↓
+Cập nhật trạng thái đơn
+        ↓
+Shipper xử lý đơn
