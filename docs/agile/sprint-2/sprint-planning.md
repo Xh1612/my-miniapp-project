@@ -229,8 +229,4 @@ Sau Sprint 2, hệ thống đạt được:
 
 ---
 
-## Mối liên hệ giữa Sprint 1 và Sprint 2
 
-> Sprint 1 tập trung **xây dựng nền tảng kỹ thuật và hoàn thiện luồng mua hàng cốt lõi**. Sprint 2 kế thừa nền tảng đó để **tích hợp các dịch vụ bên ngoài, mở rộng nghiệp vụ, hoàn thiện hệ thống quản trị, bổ sung API và kiểm thử**.
-
-> Vì vậy, Sprint 2 không lặp lại các task đã hoàn thành trong Sprint 1 mà phát triển các chức năng ở mức nâng cao dựa trên những thành phần đã có.
