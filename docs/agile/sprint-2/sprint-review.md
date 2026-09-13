@@ -1,6 +1,6 @@
 # Sprint Review — Sprint 2
 
-**Ngày:** 11/07/2026
+**Ngày:** 19/08/2026
 **Người tham dự:** Sinh viên thực hiện (Product Owner/Developer), Giảng viên hướng dẫn
 
 ## Sprint Goal đã đạt được?
