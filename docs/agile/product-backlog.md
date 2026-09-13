@@ -1,6 +1,6 @@
 # Product Backlog — Hương Quê Việt
 
-> Danh sách tổng hợp toàn bộ User Story của dự án, sắp xếp theo độ ưu tiên. Product Owner: sinh viên thực hiện đồ án (kiêm vai trò Developer trong nhóm Scrum một-người). Backlog được refine trước mỗi Sprint Planning.
+> Danh sách tổng hợp toàn bộ User Story của dự án, sắp xếp theo độ ưu tiên. Product Owner: nhóm sinh viên thực hiện đồ án. Backlog được refine trước mỗi Sprint Planning.
 
 **Chú thích trạng thái:** ✅ Done · 🔄 In Progress · 📋 To Do
 
