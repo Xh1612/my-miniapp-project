@@ -1,51 +1,68 @@
-# User Story
+# Bug Report
 
-## User Story
+## Mô tả Bug
 
-> Là một [người dùng],
-> tôi muốn [tính năng],
-> để [mục đích].
+[ Mô tả ngắn gọn lỗi xảy ra ]
 
 ---
 
 ## Thông tin
 
-- **User Story ID:** US-[XX]
-- **Epic:** [Epic]
-- **Priority:** [P0 / P1 / P2]
+- **Bug ID:** BUG-[XX]
+- **Người phát hiện:** [Tên]
+- **Người phụ trách:** [Tên]
+- **Mức độ:** [Low / Medium / High / Critical]
 - **Sprint:** [Sprint 1 / Sprint 2]
-- **Người phụ trách:** [Tên thành viên]
+- **Ngày phát hiện:** [DD/MM/YYYY]
 
 ---
 
-## Acceptance Criteria
+## Các bước tái hiện
 
-- [ ] [Điều kiện nghiệm thu 1]
-- [ ] [Điều kiện nghiệm thu 2]
-- [ ] [Điều kiện nghiệm thu 3]
-
----
-
-## Mô tả chi tiết
-
-[Viết mô tả chi tiết cho User Story]
+1. [Bước 1]
+2. [Bước 2]
+3. [Bước 3]
 
 ---
 
-## Technical Notes
+## Kết quả mong đợi
 
-- [API cần sử dụng]
-- [Database / Model liên quan]
-- [UI / Component liên quan]
-- [Các yêu cầu kỹ thuật khác]
+[Chức năng đáng lẽ phải hoạt động như thế nào]
 
 ---
 
-## Definition of Done
+## Kết quả thực tế
 
-- [ ] Code đã hoàn thành
-- [ ] Đã test chức năng
-- [ ] Không còn lỗi nghiêm trọng
-- [ ] Đã cập nhật tài liệu nếu cần
-- [ ] Đã tạo Pull Request
-- [ ] Pull Request đã được review
+[Điều gì thực sự xảy ra]
+
+---
+
+## Screenshot / Log
+
+[Đính kèm screenshot hoặc log nếu có]
+
+---
+
+## Môi trường
+
+- **OS:** [Windows / Linux / macOS]
+- **.NET:** [.NET version]
+- **Database:** [SQL Server version]
+- **Browser:** [Chrome / Edge / Firefox]
+- **Khác:** [Thông tin khác nếu cần]
+
+---
+
+## Cách xử lý
+
+[ Mô tả cách sửa Bug ]
+
+---
+
+## Checklist
+
+- [ ] Đã xác định nguyên nhân
+- [ ] Đã sửa Bug
+- [ ] Đã test lại
+- [ ] Không làm ảnh hưởng chức năng khác
+- [ ] Đã cập nhật Pull Request
