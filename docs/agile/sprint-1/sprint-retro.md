@@ -1,22 +1,57 @@
 # Sprint Retrospective — Sprint 1
 
-**Ngày:** 27/06/2026
-**Định dạng:** What went well / What didn't go well / Action items cho Sprint 2
+**Ngày:** 29/07/2026
+
+**Sprint:** Sprint 1
+
+**Thời gian Sprint:** 15/07/2026 – 29/07/2026
+
+**Team:** 6 thành viên
+
+**Định dạng:** What went well / What didn't go well / Action Items
+
+---
 
 ## 😀 Điều đã làm tốt (What went well)
 
-- Quyết định tạo Area "Admin" **ngay từ Sprint 1, trước khi viết bất kỳ Controller quản trị nào** là quyết định đúng đắn nhất của Sprint này — tránh được hoàn toàn công sức "dọn dẹp lại cấu trúc" (di chuyển Controller/View vào Area) mà lẽ ra sẽ phải làm nếu để đến Sprint sau mới nghĩ tới việc phân tách.
-- Việc seed sẵn dữ liệu mẫu (Category, Product) ngay trong Migration giúp có dữ liệu test ngay từ ngày đầu, không mất thời gian gõ tay SQL lặp lại mỗi khi cần reset database.
-- Quyết định bọc toàn bộ logic đặt hàng trong một transaction duy nhất ngay từ đầu (thay vì làm phần cơ bản trước rồi "thêm transaction sau") giúp tránh được việc phải refactor lại luồng nghiệp vụ phức tạp này ở Sprint sau.
+### 1. Thống nhất cấu trúc project ngay từ đầu
 
-## 😕 Điều chưa tốt (What didn't go well)
+Team đã thống nhất sử dụng ASP.NET Core MVC (.NET 8), EF Core và tổ chức project theo các module rõ ràng như `Controllers`, `Models`, `Data`, `Services`, `Areas/Admin`, `Views` và `wwwroot`.
 
-- Tốn khá nhiều thời gian debug lỗi `SqlTransaction has completed` vì ban đầu đọc nhầm đây là lỗi gốc thay vì lỗi thứ cấp che lỗi thật — nếu ngay từ đầu bọc `RollbackAsync()` trong try/catch riêng (như cách làm cuối cùng) thì đã tiết kiệm được thời gian debug.
-- Nhiều lỗi phát sinh (UserManager sai kiểu, thiếu `_ViewImports.cshtml` trong Area, thiếu View cho action đã viết) đều thuộc dạng "quên rà lại file liên quan sau khi đổi cấu hình lớn" — cho thấy cần một checklist kiểm tra nhanh sau mỗi thay đổi kiến trúc.
-- Chưa viết được bất kỳ dòng test tự động nào trong Sprint này — hoàn toàn dựa vào kiểm thử tay, rủi ro bỏ sót khi hệ thống phức tạp dần lên ở Sprint 2.
+Việc thống nhất cấu trúc từ đầu giúp các thành viên dễ dàng làm việc trên các phần khác nhau của hệ thống và hạn chế việc phải thay đổi cấu trúc project quá nhiều về sau.
 
-## 🎯 Action Items cho Sprint 2
+### 2. Phân chia công việc theo chức năng
 
-1. Khi thêm một Area hoặc thư mục cấu hình mới, chủ động kiểm tra ngay các file `_ViewStart`/`_ViewImports` cần thiết thay vì đợi gặp lỗi mới nhớ ra.
-2. Khi gặp exception, luôn đọc kỹ `InnerException`/stack trace đầy đủ trước khi kết luận nguyên nhân, tránh sửa nhầm chỗ.
-3. Cân nhắc dành một phần nhỏ thời gian Sprint 2 để viết Unit Test cho ít nhất các nghiệp vụ có nhiều nhánh điều kiện dễ sai sót (ví dụ: tính mã giảm giá, chuyển trạng thái đơn hàng).
+Các thành viên được phân chia theo những nhóm chức năng khác nhau như:
+
+- UI/UX và giao diện.
+- Authentication và Authorization.
+- Database và Model.
+- EF Core và Backend.
+- Product, Menu và Cart.
+- Checkout, Staff và Shipper.
+
+Việc phân chia này giúp các thành viên có thể làm việc song song thay vì phải chờ một người hoàn thành toàn bộ hệ thống.
+
+### 3. Hoàn thiện được luồng mua hàng chính
+
+Team đã tập trung xây dựng luồng chính của hệ thống:
+
+```text
+Xem thực đơn
+    ↓
+Tìm kiếm / Lọc món
+    ↓
+Xem chi tiết món
+    ↓
+Thêm vào giỏ hàng
+    ↓
+Chọn địa chỉ giao hàng
+    ↓
+Checkout
+    ↓
+Đặt hàng
+    ↓
+Nhân viên bếp xử lý
+    ↓
+Shipper xử lý đơn
