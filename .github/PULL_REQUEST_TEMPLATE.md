@@ -1,28 +1,104 @@
-# Mô tả thay đổi
+# Pull Request
 
-<!-- Tóm tắt ngắn gọn PR này làm gì -->
+## Mô tả
 
-## Liên kết Issue
+[Mô tả ngắn gọn những thay đổi trong Pull Request này]
 
-Fix cho Issue #___
+---
+
+## Issue liên quan
+
+Closes #[Issue Number]
+
+---
 
 ## Loại thay đổi
 
-- [ ] Tính năng mới (feature)
-- [ ] Sửa lỗi (bugfix)
-- [ ] Refactor (không đổi hành vi)
-- [ ] Cập nhật tài liệu
+- [ ] New feature
+- [ ] Bug fix
+- [ ] UI / UX
+- [ ] Refactor
+- [ ] Database
+- [ ] API
+- [ ] Testing
+- [ ] Documentation
+- [ ] Khác
 
-## Checklist trước khi merge
+---
 
-- [ ] Đã tự kiểm thử (test) chức năng liên quan, chạy đúng đường vui (happy path)
-- [ ] Đã kiểm thử ít nhất một kịch bản lỗi/biên (edge case)
-- [ ] Không còn lỗi biên dịch, không còn cảnh báo mới phát sinh
-- [ ] Đã cập nhật giao diện (UI) ở: <!-- liệt kê các trang/View bị ảnh hưởng, hoặc ghi "Không có" -->
-- [ ] Đã cập nhật tài liệu liên quan (README/docs) nếu có thay đổi cấu trúc hoặc cách chạy project
+## Nội dung đã thực hiện
 
-## Ảnh chụp màn hình (nếu có thay đổi giao diện)
+- [ ] [Thay đổi 1]
+- [ ] [Thay đổi 2]
+- [ ] [Thay đổi 3]
 
-<!-- Dán ảnh trước/sau nếu có -->
+---
 
-## Ghi chú cho người review
+## Testing
+
+- [ ] Đã test chức năng
+- [ ] Đã test các trường hợp lỗi
+- [ ] Đã chạy Unit Test
+- [ ] Tất cả Test Case đều Pass
+- [ ] Không phát sinh lỗi mới
+
+**Kết quả test:**
+
+[ Mô tả kết quả test ]
+
+---
+
+## UI / UX
+
+- [ ] Không thay đổi UI
+- [ ] Có thay đổi UI
+- [ ] Đã kiểm tra Responsive
+- [ ] Đã kiểm tra trên Desktop
+- [ ] Đã kiểm tra trên Mobile
+
+**Khu vực UI đã cập nhật:**
+
+[ Ví dụ: Home / Menu / Cart / Checkout / Admin ]
+
+---
+
+## Database
+
+- [ ] Không thay đổi Database
+- [ ] Có thay đổi Model
+- [ ] Có thay đổi Migration
+- [ ] Đã cập nhật Database
+
+---
+
+## API
+
+- [ ] Không thay đổi API
+- [ ] Có thêm API
+- [ ] Có chỉnh sửa API
+- [ ] Đã test API
+
+**API liên quan:**
+
+- `[METHOD] /api/...`
+- `[METHOD] /api/...`
+
+---
+
+## Checklist
+
+- [ ] Code đã được kiểm tra
+- [ ] Không commit password / API Key / secret
+- [ ] Code đã được format
+- [ ] Đã test chức năng
+- [ ] Đã chạy Unit Test
+- [ ] Đã kiểm tra UI nếu có thay đổi
+- [ ] Đã cập nhật tài liệu nếu cần
+- [ ] Đã liên kết Issue
+- [ ] PR sẵn sàng để review
+
+---
+
+## Ghi chú
+
+[Thông tin bổ sung nếu có]
