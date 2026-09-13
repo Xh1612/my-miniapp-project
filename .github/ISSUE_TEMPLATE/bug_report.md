@@ -1,37 +1,51 @@
+# User Story
+
+## User Story
+
+> Là một [người dùng],
+> tôi muốn [tính năng],
+> để [mục đích].
+
 ---
-name: Bug Report
-about: Báo cáo lỗi phát sinh trong quá trình phát triển hoặc kiểm thử
-title: "[BUG] "
-labels: bug
+
+## Thông tin
+
+- **User Story ID:** US-[XX]
+- **Epic:** [Epic]
+- **Priority:** [P0 / P1 / P2]
+- **Sprint:** [Sprint 1 / Sprint 2]
+- **Người phụ trách:** [Tên thành viên]
+
 ---
 
-## Mô tả lỗi
+## Acceptance Criteria
 
-<!-- Mô tả ngắn gọn lỗi gặp phải -->
+- [ ] [Điều kiện nghiệm thu 1]
+- [ ] [Điều kiện nghiệm thu 2]
+- [ ] [Điều kiện nghiệm thu 3]
 
-## Các bước tái hiện (Steps to Reproduce)
+---
 
-1. ...
-2. ...
-3. ...
+## Mô tả chi tiết
 
-## Kết quả mong đợi
+[Viết mô tả chi tiết cho User Story]
 
-<!-- Đáng lẽ hệ thống phải làm gì -->
+---
 
-## Kết quả thực tế
+## Technical Notes
 
-<!-- Hệ thống thực sự làm gì / thông báo lỗi cụ thể (dán nguyên stack trace nếu có) -->
+- [API cần sử dụng]
+- [Database / Model liên quan]
+- [UI / Component liên quan]
+- [Các yêu cầu kỹ thuật khác]
 
-## Môi trường
+---
 
-- Trình duyệt / OS:
-- Nhánh Git / commit:
+## Definition of Done
 
-## Mức độ ảnh hưởng
-
-- [ ] Chặn hoàn toàn (Blocker) — không thể tiếp tục công việc khác
-- [ ] Nghiêm trọng — sai lệch dữ liệu hoặc nghiệp vụ quan trọng
-- [ ] Nhẹ — lỗi giao diện, không ảnh hưởng nghiệp vụ
-
-## Đề xuất hướng xử lý (nếu có)
+- [ ] Code đã hoàn thành
+- [ ] Đã test chức năng
+- [ ] Không còn lỗi nghiêm trọng
+- [ ] Đã cập nhật tài liệu nếu cần
+- [ ] Đã tạo Pull Request
+- [ ] Pull Request đã được review
