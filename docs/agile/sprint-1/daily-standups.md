@@ -386,11 +386,4 @@
 
 ---
 
-# Ghi chú Sprint
 
-- Ngày 18/07/2026 và 19/07/2026 là Thứ Bảy và Chủ Nhật nên không ghi Daily Standup.
-- Ngày 25/07/2026 và 26/07/2026 là Thứ Bảy và Chủ Nhật nên không ghi Daily Standup.
-- Không yêu cầu cả 6 thành viên phải tham gia Daily Standup mỗi ngày.
-- Thành viên xuất hiện trong ngày nào thì ngày đó có đúng 3 task được giao.
-- Task của các thành viên trong cùng một ngày được phân chia riêng, tránh ghi trùng một công việc cho nhiều người.
-- Ngày 29/07/2026 đồng thời là ngày hoàn thiện Sprint và chuẩn bị Sprint Review.
