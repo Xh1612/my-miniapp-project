@@ -1,10 +1,6 @@
 # User Story
 
-## User Story
-
-> Là một [người dùng],
-> tôi muốn [tính năng],
-> để [mục đích].
+> Là một [người dùng], tôi muốn [tính năng], để [mục đích].
 
 ---
 
@@ -34,10 +30,10 @@
 
 ## Technical Notes
 
-- [API cần sử dụng]
-- [Database / Model liên quan]
-- [UI / Component liên quan]
-- [Các yêu cầu kỹ thuật khác]
+- **API cần sử dụng:** [API]
+- **Database / Model liên quan:** [Database / Model]
+- **UI / Component liên quan:** [UI / Component]
+- **Các yêu cầu kỹ thuật khác:** [Nếu có]
 
 ---
 
