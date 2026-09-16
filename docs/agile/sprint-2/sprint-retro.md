@@ -1,6 +1,6 @@
 # Sprint Retrospective — Sprint 2
 
-**Ngày:** 19/08/2026  
+**Ngày:** 11/07/2026
 **Sprint:** Sprint 2  
 **Thành viên:** Huỳnh Đăng Khoa, Nguyễn Phi Hùng, Nguyễn Trọng Nghĩa, Ngô Nhựt Nam, Nguyễn Chí Hoàng, Phạm Thị Hồng Gấm
 
