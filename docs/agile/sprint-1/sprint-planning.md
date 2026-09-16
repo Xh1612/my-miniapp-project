@@ -1,6 +1,6 @@
 # Sprint 1 Planning
 
-**Thời gian:** 15/07/2026 – 29/07/2026 
+**Thời gian:** 16/06/2026 – 27/06/2026
 
 **Team:** 6 thành viên
 
