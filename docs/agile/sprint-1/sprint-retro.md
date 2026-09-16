@@ -1,10 +1,10 @@
 # Sprint Retrospective — Sprint 1
 
-**Ngày:** 29/07/2026
+**Ngày:** 27/06/2026
 
 **Sprint:** Sprint 1
 
-**Thời gian Sprint:** 15/07/2026 – 29/07/2026
+**Thời gian Sprint:** 16/06/2026 – 27/06/2026
 
 **Team:** 6 thành viên
 
