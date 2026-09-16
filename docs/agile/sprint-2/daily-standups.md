@@ -1,844 +1,365 @@
-# Daily Standups — Sprint 2
+# Daily Standups — Sprint 1
 
-**Thời gian Sprint:** 31/07/2026 – 19/08/2026
+## Sprint Information
 
-**Team:** 6 thành viên
+- **Project:** Hương Quê Việt
+- **Sprint:** Sprint 1
+- **Thời gian:** 16/06/2026 – 27/06/2026
+- **Số thành viên:** 6
+
+### Thành viên
+
+1. Huỳnh Đăng Khoa
+2. Nguyễn Phi Hùng
+3. Nguyễn Trọng Nghĩa
+4. Ngô Nhựt Nam
+5. Nguyễn Chí Hoàng
+6. Phạm Thị Hồng Gấm
 
 ---
 
-## Thứ Sáu, 31/07/2026
-
-### Người tham gia
-- Huỳnh Đăng Khoa
-- Nguyễn Phi Hùng
-- Phạm Thị Hồng Gấm
+## Thứ Hai, 16/06/2026
 
 ### Huỳnh Đăng Khoa
 
-**Hôm qua làm gì:**
-- Hoàn thiện các giao diện chính của Sprint 1.
-- Kiểm tra giao diện Menu và Product Detail.
-- Chuẩn bị các thành phần UI cần nâng cấp trong Sprint 2.
-
-**Hôm nay sẽ làm gì:**
-1. Rà soát giao diện Login/Register.
-2. Xây dựng layout cho giao diện xác thực mới.
-3. Chuẩn bị theme màu sắc và typography cho thương hiệu Hương Quê Việt.
-
-**Blocker:** Không có.
+- **Hôm qua:** Bắt đầu Sprint, thống nhất Sprint Goal và phạm vi công việc.
+- **Hôm nay:**
+  1. Thiết kế Header và Navigation cho website.
+  2. Xây dựng layout tổng thể trang chủ.
+  3. Thiết kế khu vực món ăn nổi bật.
+- **Blockers:** Không có.
 
 ### Nguyễn Phi Hùng
 
-**Hôm qua làm gì:**
-- Hoàn thiện Authentication và Authorization.
-- Kiểm tra luồng Order và Order Status.
-- Chuẩn bị các chức năng thanh toán cho Sprint 2.
-
-**Hôm nay sẽ làm gì:**
-1. Rà soát cấu trúc Authentication hiện tại.
-2. Chuẩn bị tích hợp VNPay Sandbox.
-3. Thiết kế luồng callback sau khi thanh toán VNPay.
-
-**Blocker:** Cần kiểm tra thông tin kết nối VNPay Sandbox trước khi test end-to-end.
-
-### Phạm Thị Hồng Gấm
-
-**Hôm qua làm gì:**
-- Hoàn thiện Cart và Checkout UI.
-- Kiểm tra hiển thị Address.
-- Kiểm tra giao diện Staff/Shipper.
-
-**Hôm nay sẽ làm gì:**
-1. Cải thiện giao diện Login.
-2. Cải thiện giao diện Register.
-3. Thiết kế trạng thái loading và thông báo cho Checkout.
-
-**Blocker:** Không có.
-
----
-
-## Thứ Hai, 03/08/2026
-
-### Người tham gia
-- Nguyễn Phi Hùng
-- Nguyễn Trọng Nghĩa
-- Ngô Nhựt Nam
-- Nguyễn Chí Hoàng
-
-### Nguyễn Phi Hùng
-
-**Hôm qua làm gì:**
-- Chuẩn bị cấu trúc VNPay.
-- Kiểm tra Authentication.
-- Thiết kế callback thanh toán.
-
-**Hôm nay sẽ làm gì:**
-1. Tích hợp chữ ký HMAC-SHA512 cho VNPay.
-2. Xây dựng URL thanh toán VNPay.
-3. Xử lý callback từ VNPay.
-
-**Blocker:** Chưa test được đầy đủ nếu thông tin Sandbox chưa hoàn tất.
+- **Hôm qua:** Tham gia Sprint Planning và nhận nhiệm vụ Authentication.
+- **Hôm nay:**
+  1. Cấu hình ASP.NET Core Identity.
+  2. Thiết lập chức năng đăng ký tài khoản.
+  3. Thiết lập chức năng đăng nhập.
+- **Blockers:** Không có.
 
 ### Nguyễn Trọng Nghĩa
 
-**Hôm qua làm gì:**
-- Rà soát Model Order.
-- Kiểm tra tồn kho.
-- Chuẩn bị cho Coupon và Ingredient.
-
-**Hôm nay sẽ làm gì:**
-1. Thiết kế Model Coupon.
-2. Tạo quan hệ Coupon với Order.
-3. Tạo Migration cho Coupon.
-
-**Blocker:** Cần thống nhất quy tắc giảm giá trước khi hoàn thiện Service.
-
-### Ngô Nhựt Nam
-
-**Hôm qua làm gì:**
-- Kiểm tra DbContext.
-- Rà soát Service layer.
-- Chuẩn bị cấu trúc Inventory.
-
-**Hôm nay sẽ làm gì:**
-1. Xây dựng CouponService.
-2. Xử lý kiểm tra mã giảm giá.
-3. Tích hợp CouponService vào Checkout.
-
-**Blocker:** Không có.
-
-### Nguyễn Chí Hoàng
-
-**Hôm qua làm gì:**
-- Kiểm tra Menu.
-- Kiểm tra Product Detail.
-- Kiểm tra Cart integration.
-
-**Hôm nay sẽ làm gì:**
-1. Hiển thị Coupon trong Cart.
-2. Thêm UI nhập mã giảm giá.
-3. Hiển thị số tiền được giảm trước Checkout.
-
-**Blocker:** Cần chờ API/Service Coupon ổn định để tích hợp UI.
+- **Hôm qua:** Tham gia thống nhất cấu trúc Database cho Sprint 1.
+- **Hôm nay:**
+  1. Xây dựng Model Category.
+  2. Xây dựng Model Product.
+  3. Thiết lập quan hệ Category - Product.
+- **Blockers:** Không có.
 
 ---
 
-## Thứ Ba, 04/08/2026
-
-### Người tham gia
-- Nguyễn Phi Hùng
-- Nguyễn Trọng Nghĩa
-- Ngô Nhựt Nam
-
-### Nguyễn Phi Hùng
-
-**Hôm qua làm gì:**
-- Tích hợp HMAC-SHA512.
-- Xây dựng URL thanh toán.
-- Xử lý callback VNPay.
-
-**Hôm nay sẽ làm gì:**
-1. Hoàn thiện trạng thái thanh toán VNPay.
-2. Kiểm tra chữ ký callback.
-3. Xử lý trường hợp thanh toán thành công/thất bại.
-
-**Blocker:** Không có.
-
-### Nguyễn Trọng Nghĩa
-
-**Hôm qua làm gì:**
-- Tạo Model Coupon.
-- Tạo quan hệ Coupon với Order.
-- Tạo Migration.
-
-**Hôm nay sẽ làm gì:**
-1. Thiết kế Ingredient.
-2. Thiết kế ProductIngredient.
-3. Thiết kế InventoryLog.
-
-**Blocker:** Cần xác định đơn vị tính của từng nguyên liệu.
-
-### Ngô Nhựt Nam
-
-**Hôm qua làm gì:**
-- Xây dựng CouponService.
-- Kiểm tra mã giảm giá.
-- Tích hợp Coupon vào Checkout.
-
-**Hôm nay sẽ làm gì:**
-1. Xây dựng logic trừ tồn kho theo nguyên liệu.
-2. Xử lý ProductIngredient.
-3. Ghi InventoryLog khi phát sinh giao dịch.
-
-**Blocker:** Cần kiểm tra các Product chưa có công thức nguyên liệu.
-
----
-
-## Thứ Tư, 05/08/2026
-
-### Người tham gia
-- Huỳnh Đăng Khoa
-- Nguyễn Phi Hùng
-- Phạm Thị Hồng Gấm
-- Nguyễn Chí Hoàng
+## Thứ Ba, 17/06/2026
 
 ### Huỳnh Đăng Khoa
 
-**Hôm qua làm gì:**
-- Rà soát giao diện xác thực.
-- Chuẩn bị theme.
-- Kiểm tra UI Checkout.
-
-**Hôm nay sẽ làm gì:**
-1. Thiết kế trang thanh toán VNPay.
-2. Thiết kế thông báo trạng thái thanh toán.
-3. Responsive giao diện Checkout.
-
-**Blocker:** Không có.
+- **Hôm qua:** Đã xây dựng Header, Navigation và layout cơ bản của trang chủ.
+- **Hôm nay:**
+  1. Hoàn thiện Hero Section của trang chủ.
+  2. Thiết kế khu vực món ăn mới nhất.
+  3. Điều chỉnh Responsive cho trang chủ.
+- **Blockers:** Không có.
 
 ### Nguyễn Phi Hùng
 
-**Hôm qua làm gì:**
-- Hoàn thiện callback VNPay.
-- Kiểm tra chữ ký.
-- Xử lý kết quả thanh toán.
+- **Hôm qua:** Đã cấu hình Identity và tạo chức năng đăng ký, đăng nhập.
+- **Hôm nay:**
+  1. Thiết lập Authorization cho các Role.
+  2. Tạo Area Admin.
+  3. Tạo Admin Dashboard cơ bản.
+- **Blockers:** Gặp lỗi `UserManager<IdentityUser>` do một số View vẫn sử dụng `IdentityUser` thay vì `ApplicationUser`.
 
-**Hôm nay sẽ làm gì:**
-1. Tích hợp VNPay vào Order Flow.
-2. Xử lý trạng thái thanh toán trong Order.
-3. Kiểm tra trường hợp người dùng hủy thanh toán.
+### Nguyễn Trọng Nghĩa
 
-**Blocker:** Không có.
-
-### Phạm Thị Hồng Gấm
-
-**Hôm qua làm gì:**
-- Cải thiện Login.
-- Cải thiện Register.
-- Chuẩn bị UI thông báo.
-
-**Hôm nay sẽ làm gì:**
-1. Xây dựng UI Coupon.
-2. Hiển thị thông báo Coupon hợp lệ/không hợp lệ.
-3. Cải thiện giao diện Order Summary.
-
-**Blocker:** Không có.
+- **Hôm qua:** Đã xây dựng Category và Product Model.
+- **Hôm nay:**
+  1. Xây dựng Model Order.
+  2. Xây dựng Model OrderItem.
+  3. Thiết lập quan hệ Order - OrderItem.
+- **Blockers:** Không có.
 
 ### Nguyễn Chí Hoàng
 
-**Hôm qua làm gì:**
-- Tích hợp Coupon vào Cart.
-- Hiển thị số tiền giảm.
-- Kiểm tra Cart trước Checkout.
-
-**Hôm nay sẽ làm gì:**
-1. Test Coupon với nhiều mức giá.
-2. Test Coupon hết hạn.
-3. Test Coupon không tồn tại.
-
-**Blocker:** Không có.
+- **Hôm qua:** Nhận nhiệm vụ phát triển chức năng Menu.
+- **Hôm nay:**
+  1. Xây dựng trang Menu.
+  2. Hiển thị danh sách món ăn.
+  3. Hiển thị danh sách Category.
+- **Blockers:** Không có.
 
 ---
 
-## Thứ Năm, 06/08/2026
+## Thứ Tư, 18/06/2026
 
-### Người tham gia
-- Nguyễn Trọng Nghĩa
-- Ngô Nhựt Nam
-- Nguyễn Phi Hùng
+### Nguyễn Phi Hùng
+
+- **Hôm qua:** Đã thiết lập Authorization và tạo Admin Area.
+- **Hôm nay:**
+  1. Hoàn thiện Admin Dashboard.
+  2. Thiết lập quyền truy cập khu vực Admin.
+  3. Kiểm tra luồng đăng nhập theo Role.
+- **Blockers:** Đã xử lý lỗi `UserManager<IdentityUser>` bằng cách chuyển sang `ApplicationUser`.
 
 ### Nguyễn Trọng Nghĩa
 
-**Hôm qua làm gì:**
-- Thiết kế Ingredient.
-- Thiết kế ProductIngredient.
-- Thiết kế InventoryLog.
-
-**Hôm nay sẽ làm gì:**
-1. Tạo Migration cho Ingredient.
-2. Seed dữ liệu nguyên liệu mẫu.
-3. Kiểm tra quan hệ Product–Ingredient.
-
-**Blocker:** Không có.
-
-### Ngô Nhựt Nam
-
-**Hôm qua làm gì:**
-- Xây dựng tồn kho theo nguyên liệu.
-- Xử lý ProductIngredient.
-- Ghi InventoryLog.
-
-**Hôm nay sẽ làm gì:**
-1. Hoàn thiện InventoryService.
-2. Xử lý trường hợp sản phẩm chưa có công thức.
-3. Tích hợp InventoryService vào Checkout.
-
-**Blocker:** Cần đảm bảo transaction không bị ảnh hưởng khi chuyển sang tồn kho theo nguyên liệu.
-
-### Nguyễn Phi Hùng
-
-**Hôm qua làm gì:**
-- Tích hợp VNPay vào Order.
-- Xử lý trạng thái thanh toán.
-- Kiểm tra hủy thanh toán.
-
-**Hôm nay sẽ làm gì:**
-1. Test VNPay Sandbox end-to-end.
-2. Xử lý ReturnUrl.
-3. Kiểm tra tính toàn vẹn dữ liệu Order sau thanh toán.
-
-**Blocker:** Không có.
-
----
-
-## Thứ Sáu, 07/08/2026
-
-### Người tham gia
-- Nguyễn Phi Hùng
-- Ngô Nhựt Nam
-- Phạm Thị Hồng Gấm
-
-### Nguyễn Phi Hùng
-
-**Hôm qua làm gì:**
-- Test VNPay Sandbox.
-- Xử lý ReturnUrl.
-- Kiểm tra Order sau thanh toán.
-
-**Hôm nay sẽ làm gì:**
-1. Hoàn thiện VNPay Service.
-2. Xử lý các trường hợp VNPay trả kết quả lỗi.
-3. Kiểm tra bảo mật chữ ký VNPay.
-
-**Blocker:** Không có.
-
-### Ngô Nhựt Nam
-
-**Hôm qua làm gì:**
-- Hoàn thiện InventoryService.
-- Xử lý sản phẩm chưa có công thức.
-- Tích hợp Inventory vào Checkout.
-
-**Hôm nay sẽ làm gì:**
-1. Test trừ tồn kho theo nguyên liệu.
-2. Test trường hợp thiếu nguyên liệu.
-3. Kiểm tra InventoryLog sau Checkout.
-
-**Blocker:** Không có.
-
-### Phạm Thị Hồng Gấm
-
-**Hôm qua làm gì:**
-- Hoàn thiện Coupon UI.
-- Xử lý thông báo Coupon.
-- Cải thiện Order Summary.
-
-**Hôm nay sẽ làm gì:**
-1. Thiết kế UI trạng thái thanh toán.
-2. Thiết kế trang Payment Result.
-3. Cải thiện giao diện Order Detail.
-
-**Blocker:** Không có.
-
----
-
-## Thứ Hai, 10/08/2026
-
-### Người tham gia
-- Nguyễn Phi Hùng
-- Nguyễn Trọng Nghĩa
-- Ngô Nhựt Nam
-- Phạm Thị Hồng Gấm
-
-### Nguyễn Phi Hùng
-
-**Hôm qua làm gì:**
-- Hoàn thiện VNPay.
-- Kiểm tra lỗi thanh toán.
-- Kiểm tra chữ ký.
-
-**Hôm nay sẽ làm gì:**
-1. Xây dựng SignalR Hub cho Order.
-2. Phát sự kiện khi trạng thái đơn thay đổi.
-3. Kết nối Staff/Shipper với SignalR.
-
-**Blocker:** Không có.
-
-### Nguyễn Trọng Nghĩa
-
-**Hôm qua làm gì:**
-- Kiểm tra Inventory.
-- Kiểm tra thiếu nguyên liệu.
-- Kiểm tra InventoryLog.
-
-**Hôm nay sẽ làm gì:**
-1. Rà soát Model Order Status.
-2. Kiểm tra các trạng thái hợp lệ.
-3. Kiểm tra dữ liệu Order History.
-
-**Blocker:** Không có.
-
-### Ngô Nhựt Nam
-
-**Hôm qua làm gì:**
-- Test Inventory.
-- Test thiếu nguyên liệu.
-- Kiểm tra InventoryLog.
-
-**Hôm nay sẽ làm gì:**
-1. Tích hợp SignalR vào Order Service.
-2. Gửi notification khi Order thay đổi trạng thái.
-3. Kiểm tra kết nối Hub.
-
-**Blocker:** Không có.
-
-### Phạm Thị Hồng Gấm
-
-**Hôm qua làm gì:**
-- Thiết kế Payment Result.
-- Cải thiện Order Detail.
-- Hoàn thiện UI trạng thái thanh toán.
-
-**Hôm nay sẽ làm gì:**
-1. Hiển thị trạng thái Order realtime.
-2. Thêm notification khi đơn thay đổi.
-3. Cải thiện giao diện Order History.
-
-**Blocker:** Không có.
-
----
-
-## Thứ Ba, 11/08/2026
-
-### Người tham gia
-- Nguyễn Phi Hùng
-- Ngô Nhựt Nam
-- Nguyễn Chí Hoàng
-
-### Nguyễn Phi Hùng
-
-**Hôm qua làm gì:**
-- Xây dựng SignalR Hub.
-- Phát sự kiện Order.
-- Kết nối Staff/Shipper.
-
-**Hôm nay sẽ làm gì:**
-1. Kiểm tra SignalR với nhiều client.
-2. Xử lý reconnect.
-3. Kiểm tra quyền truy cập Hub.
-
-**Blocker:** Cần kiểm tra trường hợp người dùng mất kết nối rồi truy cập lại.
-
-### Ngô Nhựt Nam
-
-**Hôm qua làm gì:**
-- Tích hợp SignalR vào Service.
-- Gửi notification.
-- Kiểm tra Hub.
-
-**Hôm nay sẽ làm gì:**
-1. Tích hợp EmailService.
-2. Tạo MockSmsService.
-3. Tạo NotificationService dùng chung.
-
-**Blocker:** Không có.
+- **Hôm qua:** Đã xây dựng Order và OrderItem.
+- **Hôm nay:**
+  1. Cấu hình ApplicationDbContext.
+  2. Tạo Migration đầu tiên.
+  3. Seed dữ liệu Category và Product.
+- **Blockers:** Không có.
 
 ### Nguyễn Chí Hoàng
 
-**Hôm qua làm gì:**
-- Kiểm tra Product.
-- Kiểm tra Order History.
-- Kiểm tra UI realtime.
-
-**Hôm nay sẽ làm gì:**
-1. Test trạng thái Order realtime.
-2. Test notification khi Staff cập nhật đơn.
-3. Test notification khi Shipper cập nhật đơn.
-
-**Blocker:** Không có.
+- **Hôm qua:** Đã xây dựng trang Menu và hiển thị Category.
+- **Hôm nay:**
+  1. Xây dựng chức năng lọc món theo Category.
+  2. Tạo chức năng tìm kiếm món theo tên.
+  3. Kiểm tra kết quả tìm kiếm và lọc.
+- **Blockers:** Không có.
 
 ---
 
-## Thứ Tư, 12/08/2026
-
-### Người tham gia
-- Nguyễn Phi Hùng
-- Nguyễn Chí Hoàng
-- Phạm Thị Hồng Gấm
-
-### Nguyễn Phi Hùng
-
-**Hôm qua làm gì:**
-- Kiểm tra SignalR nhiều client.
-- Xử lý reconnect.
-- Kiểm tra quyền Hub.
-
-**Hôm nay sẽ làm gì:**
-1. Hoàn thiện Order Notification.
-2. Tích hợp notification vào StaffController.
-3. Tích hợp notification vào ShipperController.
-
-**Blocker:** Cần tránh tạo notification trùng khi trạng thái được cập nhật nhiều lần.
-
-### Nguyễn Chí Hoàng
-
-**Hôm qua làm gì:**
-- Test Order realtime.
-- Test Staff notification.
-- Test Shipper notification.
-
-**Hôm nay sẽ làm gì:**
-1. Xây dựng trang lịch sử đơn hàng khách hàng.
-2. Thêm bộ lọc trạng thái đơn.
-3. Thêm chức năng xem chi tiết đơn cũ.
-
-**Blocker:** Không có.
-
-### Phạm Thị Hồng Gấm
-
-**Hôm qua làm gì:**
-- Hiển thị Order realtime.
-- Notification UI.
-- Order History UI.
-
-**Hôm nay sẽ làm gì:**
-1. Hoàn thiện giao diện Order History.
-2. Thiết kế trạng thái đơn hàng bằng Timeline.
-3. Responsive trang Order History.
-
-**Blocker:** Không có.
-
----
-
-## Thứ Năm, 13/08/2026
-
-### Người tham gia
-- Nguyễn Trọng Nghĩa
-- Nguyễn Phi Hùng
-- Ngô Nhựt Nam
-
-### Nguyễn Trọng Nghĩa
-
-**Hôm qua làm gì:**
-- Rà soát Order.
-- Kiểm tra Order History.
-- Kiểm tra dữ liệu trạng thái.
-
-**Hôm nay sẽ làm gì:**
-1. Xây dựng quản lý Category trong Admin.
-2. Thêm chức năng tạo Category.
-3. Thêm chức năng sửa Category.
-
-**Blocker:** Không có.
-
-### Nguyễn Phi Hùng
-
-**Hôm qua làm gì:**
-- Hoàn thiện Notification.
-- Tích hợp StaffController.
-- Tích hợp ShipperController.
-
-**Hôm nay sẽ làm gì:**
-1. Kiểm tra Authorization trong Admin.
-2. Kiểm tra quyền quản lý Category.
-3. Kiểm tra quyền quản lý Product.
-
-**Blocker:** Không có.
-
-### Ngô Nhựt Nam
-
-**Hôm qua làm gì:**
-- Hoàn thiện EmailService.
-- Hoàn thiện MockSmsService.
-- Hoàn thiện NotificationService.
-
-**Hôm nay sẽ làm gì:**
-1. Xây dựng CRUD Product trong Admin.
-2. Tích hợp upload ảnh sản phẩm.
-3. Xử lý xóa mềm Product.
-
-**Blocker:** Cần kiểm tra trường hợp Product đã xuất hiện trong Order.
-
----
-
-## Thứ Sáu, 14/08/2026
-
-### Người tham gia
-- Nguyễn Trọng Nghĩa
-- Ngô Nhựt Nam
-- Nguyễn Phi Hùng
-- Huỳnh Đăng Khoa
-
-### Nguyễn Trọng Nghĩa
-
-**Hôm qua làm gì:**
-- Xây dựng Category CRUD.
-- Thêm Category.
-- Sửa Category.
-
-**Hôm nay sẽ làm gì:**
-1. Hoàn thiện xóa Category.
-2. Kiểm tra Category có Product liên quan.
-3. Test Category CRUD.
-
-**Blocker:** Không cho phép xóa Category nếu dữ liệu liên quan chưa được xử lý phù hợp.
-
-### Ngô Nhựt Nam
-
-**Hôm qua làm gì:**
-- Xây dựng Product CRUD.
-- Upload ảnh.
-- Xử lý xóa mềm.
-
-**Hôm nay sẽ làm gì:**
-1. Hoàn thiện Product Management.
-2. Kiểm tra Product với Category.
-3. Kiểm tra Product với Ingredient.
-
-**Blocker:** Không có.
-
-### Nguyễn Phi Hùng
-
-**Hôm qua làm gì:**
-- Kiểm tra Authorization.
-- Kiểm tra quyền Category.
-- Kiểm tra quyền Product.
-
-**Hôm nay sẽ làm gì:**
-1. Xây dựng quản lý User.
-2. Phân quyền User theo Role.
-3. Kiểm tra quyền truy cập Admin/User.
-
-**Blocker:** Không có.
+## Thứ Năm, 19/06/2026
 
 ### Huỳnh Đăng Khoa
 
-**Hôm qua làm gì:**
-- Chuẩn bị UI thương hiệu.
-- Kiểm tra các trang khách hàng.
-- Chuẩn bị theme CSS.
-
-**Hôm nay sẽ làm gì:**
-1. Xây dựng `theme.css`.
-2. Áp dụng màu sắc thương hiệu Hương Quê Việt.
-3. Cải thiện Header và Footer.
-
-**Blocker:** Không có.
-
----
-
-## Thứ Hai, 17/08/2026
-
-### Người tham gia
-- Nguyễn Phi Hùng
-- Nguyễn Trọng Nghĩa
-- Ngô Nhựt Nam
-- Huỳnh Đăng Khoa
+- **Hôm qua:** Đã hoàn thiện trang chủ và Responsive cơ bản.
+- **Hôm nay:**
+  1. Thiết kế giao diện Product Detail.
+  2. Hiển thị hình ảnh và thông tin món ăn.
+  3. Thiết kế khu vực giá và nút thêm vào giỏ hàng.
+- **Blockers:** Không có.
 
 ### Nguyễn Phi Hùng
 
-**Hôm qua làm gì:**
-- Xây dựng User Management.
-- Phân quyền User.
-- Kiểm tra Authorization.
+- **Hôm qua:** Đã hoàn thiện Admin Dashboard và phân quyền.
+- **Hôm nay:**
+  1. Xây dựng tìm kiếm nâng cao theo giá.
+  2. Thêm bộ lọc theo Category.
+  3. Thêm bộ lọc theo mức độ cay.
+- **Blockers:** Không có.
 
-**Hôm nay sẽ làm gì:**
-1. Hoàn thiện User Management.
-2. Thêm chức năng khóa/mở khóa tài khoản.
-3. Kiểm tra phân quyền Admin/Staff/Shipper.
+### Ngô Nhựt Nam
 
-**Blocker:** Không có.
+- **Hôm qua:** Đã hoàn thiện phần Database và Seed Data.
+- **Hôm nay:**
+  1. Xây dựng Model Address.
+  2. Tạo chức năng thêm địa chỉ giao hàng.
+  3. Xây dựng chức năng chọn địa chỉ mặc định.
+- **Blockers:** Không có.
+
+---
+
+## Thứ Sáu, 20/06/2026
+
+### Huỳnh Đăng Khoa
+
+- **Hôm qua:** Đã xây dựng giao diện Product Detail và khu vực thông tin món ăn.
+- **Hôm nay:**
+  1. Hoàn thiện Responsive cho Product Detail.
+  2. Thiết kế khu vực đánh giá món ăn.
+  3. Điều chỉnh giao diện nút Add to Cart.
+- **Blockers:** Không có.
 
 ### Nguyễn Trọng Nghĩa
 
-**Hôm qua làm gì:**
-- Hoàn thiện Category.
-- Kiểm tra quan hệ Category.
-- Test Category CRUD.
-
-**Hôm nay sẽ làm gì:**
-1. Rà soát Ingredient Management.
-2. Kiểm tra tồn kho nguyên liệu trong Admin.
-3. Chuẩn bị dữ liệu cho thống kê.
-
-**Blocker:** Không có.
+- **Hôm qua:** Đã hoàn thiện Database Model và Seed Data.
+- **Hôm nay:**
+  1. Xây dựng Model Review.
+  2. Tạo chức năng lưu đánh giá.
+  3. Thiết lập quan hệ Review - Product.
+- **Blockers:** Không có.
 
 ### Ngô Nhựt Nam
 
-**Hôm qua làm gì:**
-- Hoàn thiện Product Management.
-- Kiểm tra Product–Category.
-- Kiểm tra Product–Ingredient.
-
-**Hôm nay sẽ làm gì:**
-1. Xây dựng Dashboard thống kê.
-2. Chuẩn bị dữ liệu doanh thu.
-3. Tích hợp Chart.js.
-
-**Blocker:** Không có.
-
-### Huỳnh Đăng Khoa
-
-**Hôm qua làm gì:**
-- Xây dựng theme.css.
-- Áp dụng màu thương hiệu.
-- Cải thiện Header/Footer.
-
-**Hôm nay sẽ làm gì:**
-1. Áp dụng theme cho trang Home.
-2. Áp dụng theme cho Menu.
-3. Áp dụng theme cho Product Detail.
-
-**Blocker:** Cần đảm bảo CSS mới không ảnh hưởng layout cũ.
+- **Hôm qua:** Đã tạo Address Model và chức năng thêm địa chỉ.
+- **Hôm nay:**
+  1. Xây dựng chức năng sửa địa chỉ.
+  2. Xây dựng chức năng xóa địa chỉ.
+  3. Hiển thị danh sách địa chỉ của người dùng.
+- **Blockers:** Không có.
 
 ---
 
-## Thứ Ba, 18/08/2026
+## Thứ Hai, 23/06/2026
 
-### Người tham gia
-- Nguyễn Phi Hùng
-- Ngô Nhựt Nam
-- Nguyễn Chí Hoàng
-- Phạm Thị Hồng Gấm
+### Nguyễn Chí Hoàng
 
-### Nguyễn Phi Hùng
+- **Hôm qua:** Đã hoàn thiện tìm kiếm, lọc Category và kiểm tra Menu.
+- **Hôm nay:**
+  1. Liên kết Menu với Product Detail.
+  2. Xử lý chức năng Add to Cart từ Product Detail.
+  3. Kiểm tra luồng Menu → Product Detail → Cart.
+- **Blockers:** Không có.
 
-**Hôm qua làm gì:**
-- Hoàn thiện User Management.
-- Khóa/mở khóa tài khoản.
-- Kiểm tra Role.
+### Phạm Thị Hồng Gấm
 
-**Hôm nay sẽ làm gì:**
-1. Thiết kế JWT Authentication cho API.
-2. Cấu hình JWT Bearer.
-3. Tạo endpoint API đầu tiên.
+- **Hôm qua:** Chuẩn bị cấu trúc giao diện Cart.
+- **Hôm nay:**
+  1. Thiết kế giao diện Cart.
+  2. Hiển thị danh sách sản phẩm trong Cart.
+  3. Xử lý tăng và giảm số lượng sản phẩm.
+- **Blockers:** Không có.
 
-**Blocker:** Cần đảm bảo JWT không ảnh hưởng Authentication bằng Cookie của website.
+### Nguyễn Trọng Nghĩa
+
+- **Hôm qua:** Đã xây dựng Review Model và chức năng lưu đánh giá.
+- **Hôm nay:**
+  1. Hoàn thiện logic kiểm tra Review.
+  2. Kiểm tra dữ liệu Review trong Database.
+  3. Tích hợp Review vào Product Detail.
+- **Blockers:** Không có.
+
+---
+
+## Thứ Ba, 24/06/2026
+
+### Phạm Thị Hồng Gấm
+
+- **Hôm qua:** Đã xây dựng Cart UI và xử lý thay đổi số lượng.
+- **Hôm nay:**
+  1. Xử lý xóa sản phẩm khỏi Cart.
+  2. Tính tổng tiền Cart.
+  3. Hiển thị số lượng sản phẩm trên Navbar.
+- **Blockers:** Không có.
+
+### Nguyễn Trọng Nghĩa
+
+- **Hôm qua:** Đã hoàn thiện Review và tích hợp vào Product Detail.
+- **Hôm nay:**
+  1. Xây dựng chức năng Checkout.
+  2. Tạo Order và OrderItem từ Cart.
+  3. Thiết lập transaction khi tạo Order.
+- **Blockers:** Khi test Checkout xuất hiện lỗi `This SqlTransaction has completed; it is no longer usable`.
 
 ### Ngô Nhựt Nam
 
-**Hôm qua làm gì:**
-- Xây dựng Dashboard.
-- Chuẩn bị dữ liệu doanh thu.
-- Tích hợp Chart.js.
-
-**Hôm nay sẽ làm gì:**
-1. Hoàn thiện biểu đồ doanh thu.
-2. Thêm thống kê số lượng đơn hàng.
-3. Kiểm tra dữ liệu thống kê theo thời gian.
-
-**Blocker:** Không có.
-
-### Nguyễn Chí Hoàng
-
-**Hôm qua làm gì:**
-- Kiểm tra Order History.
-- Kiểm tra Product.
-- Kiểm tra các luồng khách hàng.
-
-**Hôm nay sẽ làm gì:**
-1. Xây dựng Unit Test cho CouponService.
-2. Kiểm thử Coupon hợp lệ.
-3. Kiểm thử Coupon không hợp lệ/hết hạn.
-
-**Blocker:** Không có.
-
-### Phạm Thị Hồng Gấm
-
-**Hôm qua làm gì:**
-- Cải thiện UI Home.
-- Cải thiện UI Menu.
-- Cải thiện Product Detail.
-
-**Hôm nay sẽ làm gì:**
-1. Áp dụng theme cho Cart.
-2. Áp dụng theme cho Checkout.
-3. Áp dụng theme cho Order History.
-
-**Blocker:** Không có.
+- **Hôm qua:** Đã hoàn thiện chức năng quản lý địa chỉ.
+- **Hôm nay:**
+  1. Cài đặt công thức Haversine.
+  2. Tính khoảng cách giữa địa chỉ giao hàng và điểm xuất phát.
+  3. Xây dựng logic tính phí giao hàng.
+- **Blockers:** Không có.
 
 ---
 
-## Thứ Tư, 19/08/2026 — Ngày cuối Sprint
+## Thứ Tư, 25/06/2026
 
-### Người tham gia
-- Huỳnh Đăng Khoa
-- Nguyễn Phi Hùng
-- Nguyễn Chí Hoàng
-- Phạm Thị Hồng Gấm
+### Nguyễn Trọng Nghĩa
 
-### Huỳnh Đăng Khoa
+- **Hôm qua:** Đã xây dựng Checkout và phát hiện lỗi Transaction.
+- **Hôm nay:**
+  1. Xử lý lỗi Transaction khi Checkout.
+  2. Kiểm tra việc tạo Order và OrderItem.
+  3. Kiểm tra cập nhật tồn kho sau khi đặt hàng.
+- **Blockers:** Đã xác định lỗi Rollback được gọi trên Transaction đã hoàn thành và tiến hành điều chỉnh xử lý Exception.
 
-**Hôm qua làm gì:**
-- Áp dụng theme cho các trang khách hàng.
-- Kiểm tra responsive.
-- Rà soát giao diện toàn hệ thống.
+### Phạm Thị Hồng Gấm
 
-**Hôm nay sẽ làm gì:**
-1. Kiểm tra UI toàn bộ website.
-2. Sửa các lỗi giao diện còn lại.
-3. Chuẩn bị giao diện cho Sprint Review.
-
-**Blocker:** Không có.
+- **Hôm qua:** Đã hoàn thiện Cart và tổng tiền.
+- **Hôm nay:**
+  1. Thiết kế giao diện Checkout.
+  2. Hiển thị thông tin địa chỉ giao hàng.
+  3. Hiển thị tổng tiền và phí giao hàng.
+- **Blockers:** Không có.
 
 ### Nguyễn Phi Hùng
 
-**Hôm qua làm gì:**
-- Thiết kế JWT.
-- Cấu hình JWT Bearer.
-- Tạo API endpoint.
-
-**Hôm nay sẽ làm gì:**
-1. Hoàn thiện JWT API.
-2. Kiểm tra Cookie Authentication và JWT hoạt động song song.
-3. Kiểm thử Authorization của API.
-
-**Blocker:** Cần kiểm tra lại toàn bộ luồng đăng nhập sau khi thêm JWT.
-
-### Nguyễn Chí Hoàng
-
-**Hôm qua làm gì:**
-- Viết Unit Test cho CouponService.
-- Test Coupon hợp lệ.
-- Test Coupon lỗi.
-
-**Hôm nay sẽ làm gì:**
-1. Viết Unit Test cho OrderStatusMachine.
-2. Kiểm tra các trạng thái hợp lệ.
-3. Kiểm tra các trường hợp chuyển trạng thái không hợp lệ.
-
-**Blocker:** Không có.
-
-### Phạm Thị Hồng Gấm
-
-**Hôm qua làm gì:**
-- Áp dụng theme cho Cart.
-- Áp dụng theme cho Checkout.
-- Áp dụng theme cho Order History.
-
-**Hôm nay sẽ làm gì:**
-1. Kiểm tra responsive toàn bộ giao diện khách hàng.
-2. Sửa lỗi UI phát hiện trong quá trình kiểm thử.
-3. Chuẩn bị screenshot/demo cho Sprint Review.
-
-**Blocker:** Không có.
+- **Hôm qua:** Đã hoàn thiện Advanced Search.
+- **Hôm nay:**
+  1. Xây dựng OrderStatusMachine.
+  2. Khai báo các trạng thái của Order.
+  3. Kiểm tra điều kiện chuyển trạng thái.
+- **Blockers:** Không có.
 
 ---
 
-# Tổng kết Sprint 2
+## Thứ Năm, 26/06/2026
 
-Sprint 2 tập trung hoàn thiện các chức năng nâng cao của hệ thống:
+### Phạm Thị Hồng Gấm
 
-- VNPay Sandbox.
-- Coupon.
-- Inventory theo nguyên liệu.
-- SignalR.
-- Email/SMS Notification.
-- Order History.
-- Category/Product/User Management.
-- Dashboard và Chart.js.
-- JWT API.
-- Unit Test.
-- Giao diện thương hiệu Hương Quê Việt.
+- **Hôm qua:** Đã hoàn thiện giao diện Checkout.
+- **Hôm nay:**
+  1. Thiết kế giao diện Kitchen.
+  2. Hiển thị danh sách đơn hàng mới.
+  3. Tạo thao tác tiếp nhận đơn hàng cho Staff.
+- **Blockers:** Không có.
 
-Các chức năng sau Sprint 2 sẽ được kiểm thử tổng thể trước khi thực hiện Sprint Review và Sprint Retrospective.
+### Ngô Nhựt Nam
+
+- **Hôm qua:** Đã hoàn thiện tính khoảng cách và phí giao hàng.
+- **Hôm nay:**
+  1. Xây dựng Shipper Controller.
+  2. Hiển thị danh sách đơn hàng sẵn sàng giao.
+  3. Xử lý cập nhật trạng thái giao hàng.
+- **Blockers:** Không có.
+
+### Nguyễn Chí Hoàng
+
+- **Hôm qua:** Đã hoàn thiện luồng Menu → Product Detail → Cart.
+- **Hôm nay:**
+  1. Xây dựng chức năng hủy đơn hàng.
+  2. Kiểm tra điều kiện được phép hủy đơn.
+  3. Cập nhật trạng thái đơn sau khi hủy.
+- **Blockers:** Không có.
+
+---
+
+## Thứ Sáu, 27/06/2026 — Ngày cuối Sprint
+
+### Huỳnh Đăng Khoa
+
+- **Hôm qua:** Đã hoàn thiện giao diện chính của Customer và kiểm tra Responsive.
+- **Hôm nay:**
+  1. Sửa lỗi khoảng cách và đồng bộ giao diện giữa Menu, Cart và Checkout.
+  2. Chuẩn bị giao diện và Demo luồng đặt món cho Sprint Review.
+  3. Kiểm tra lại các màn hình Customer chính.
+- **Blockers:** Một số thành phần cần điều chỉnh lại trên màn hình nhỏ.
+
+### Nguyễn Phi Hùng
+
+- **Hôm qua:** Đã hoàn thiện OrderStatusMachine và kiểm tra Authorization/Order Status.
+- **Hôm nay:**
+  1. Kiểm tra lại Authentication và quyền truy cập Admin, Staff, Shipper.
+  2. Hỗ trợ xử lý các lỗi Backend còn lại.
+  3. Chuẩn bị phần Backend cho Sprint Review.
+- **Blockers:** Không có.
+
+### Nguyễn Trọng Nghĩa
+
+- **Hôm qua:** Đã xử lý lỗi Transaction và kiểm tra Checkout.
+- **Hôm nay:**
+  1. Kiểm tra tính toàn vẹn dữ liệu Order.
+  2. Kiểm tra quan hệ Order - OrderItem.
+  3. Kiểm tra tồn kho sau Checkout.
+- **Blockers:** Không có.
+
+### Ngô Nhựt Nam
+
+- **Hôm qua:** Đã hoàn thiện Shipper Controller và cập nhật trạng thái giao hàng.
+- **Hôm nay:**
+  1. Kiểm tra chức năng Address.
+  2. Kiểm tra công thức Delivery Fee.
+  3. Kiểm tra luồng Shipper nhận và giao đơn.
+- **Blockers:** Không có.
+
+### Nguyễn Chí Hoàng
+
+- **Hôm qua:** Đã hoàn thiện chức năng hủy đơn.
+- **Hôm nay:**
+  1. Kiểm tra lại Menu và Search.
+  2. Kiểm tra lại Cart.
+  3. Chuẩn bị luồng Customer Demo.
+- **Blockers:** Không có.
+
+### Phạm Thị Hồng Gấm
+
+- **Hôm qua:** Đã hoàn thiện Kitchen UI và luồng tiếp nhận đơn.
+- **Hôm nay:**
+  1. Kiểm tra giao diện Kitchen.
+  2. Kiểm tra hiển thị đơn hàng mới.
+  3. Chuẩn bị phần Staff Demo.
+- **Blockers:** Không có.
+
+---
