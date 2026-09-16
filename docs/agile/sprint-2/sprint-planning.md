@@ -1,6 +1,6 @@
 # Sprint 2 Planning
 
-**Thời gian:** 31/07/2026 – 19/08/2026
+**Thời gian:** 30/06/2026 – 11/07/2026
 
 **Team:** 6 thành viên
 
