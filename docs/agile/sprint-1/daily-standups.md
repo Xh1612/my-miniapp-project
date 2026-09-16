@@ -4,7 +4,7 @@
 
 - **Project:** Hương Quê Việt
 - **Sprint:** Sprint 1
-- **Thời gian:** 15/07/2026 – 29/07/2026
+- **Thời gian:** 16/06/2026 – 27/06/2026
 - **Số thành viên:** 6
 
 ### Thành viên
@@ -18,7 +18,7 @@
 
 ---
 
-## Thứ Tư, 15/07/2026
+## Thứ Hai, 16/06/2026
 
 ### Huỳnh Đăng Khoa
 
@@ -49,7 +49,7 @@
 
 ---
 
-## Thứ Năm, 16/07/2026
+## Thứ Ba, 17/06/2026
 
 ### Huỳnh Đăng Khoa
 
@@ -89,7 +89,7 @@
 
 ---
 
-## Thứ Sáu, 17/07/2026
+## Thứ Tư, 18/06/2026
 
 ### Nguyễn Phi Hùng
 
@@ -120,7 +120,7 @@
 
 ---
 
-## Thứ Hai, 20/07/2026
+## Thứ Năm, 19/06/2026
 
 ### Huỳnh Đăng Khoa
 
@@ -151,7 +151,7 @@
 
 ---
 
-## Thứ Ba, 21/07/2026
+## Thứ Sáu, 20/06/2026
 
 ### Huỳnh Đăng Khoa
 
@@ -182,7 +182,7 @@
 
 ---
 
-## Thứ Tư, 22/07/2026
+## Thứ Hai, 23/06/2026
 
 ### Nguyễn Chí Hoàng
 
@@ -213,7 +213,7 @@
 
 ---
 
-## Thứ Năm, 23/07/2026
+## Thứ Ba, 24/06/2026
 
 ### Phạm Thị Hồng Gấm
 
@@ -244,7 +244,7 @@
 
 ---
 
-## Thứ Sáu, 24/07/2026
+## Thứ Tư, 25/06/2026
 
 ### Nguyễn Trọng Nghĩa
 
@@ -275,7 +275,7 @@
 
 ---
 
-## Thứ Hai, 27/07/2026
+## Thứ Năm, 26/06/2026
 
 ### Phạm Thị Hồng Gấm
 
@@ -306,24 +306,24 @@
 
 ---
 
-## Thứ Ba, 28/07/2026
+## Thứ Sáu, 27/06/2026 — Ngày cuối Sprint
 
 ### Huỳnh Đăng Khoa
 
-- **Hôm qua:** Đã hoàn thiện các giao diện chính của Customer.
+- **Hôm qua:** Đã hoàn thiện giao diện chính của Customer và kiểm tra Responsive.
 - **Hôm nay:**
-  1. Kiểm tra Responsive toàn bộ Customer UI.
-  2. Sửa lỗi khoảng cách và kích thước các thành phần.
-  3. Đồng bộ giao diện giữa Menu, Cart và Checkout.
+  1. Sửa lỗi khoảng cách và đồng bộ giao diện giữa Menu, Cart và Checkout.
+  2. Chuẩn bị giao diện và Demo luồng đặt món cho Sprint Review.
+  3. Kiểm tra lại các màn hình Customer chính.
 - **Blockers:** Một số thành phần cần điều chỉnh lại trên màn hình nhỏ.
 
 ### Nguyễn Phi Hùng
 
-- **Hôm qua:** Đã hoàn thiện OrderStatusMachine.
+- **Hôm qua:** Đã hoàn thiện OrderStatusMachine và kiểm tra Authorization/Order Status.
 - **Hôm nay:**
-  1. Kiểm tra Authorization của Customer, Staff và Shipper.
-  2. Kiểm tra các trạng thái của Order.
-  3. Hỗ trợ xử lý lỗi Backend còn lại.
+  1. Kiểm tra lại Authentication và quyền truy cập Admin, Staff, Shipper.
+  2. Hỗ trợ xử lý các lỗi Backend còn lại.
+  3. Chuẩn bị phần Backend cho Sprint Review.
 - **Blockers:** Không có.
 
 ### Nguyễn Trọng Nghĩa
@@ -342,28 +342,6 @@
   1. Kiểm tra chức năng Address.
   2. Kiểm tra công thức Delivery Fee.
   3. Kiểm tra luồng Shipper nhận và giao đơn.
-- **Blockers:** Không có.
-
----
-
-## Thứ Tư, 29/07/2026
-
-### Huỳnh Đăng Khoa
-
-- **Hôm qua:** Đã kiểm tra Responsive và sửa các lỗi giao diện.
-- **Hôm nay:**
-  1. Chuẩn bị giao diện cho Sprint Review.
-  2. Kiểm tra lại các màn hình Customer chính.
-  3. Chuẩn bị Demo luồng đặt món.
-- **Blockers:** Không có.
-
-### Nguyễn Phi Hùng
-
-- **Hôm qua:** Đã kiểm tra Authorization và Order Status.
-- **Hôm nay:**
-  1. Kiểm tra lại Authentication.
-  2. Kiểm tra quyền truy cập Admin, Staff và Shipper.
-  3. Chuẩn bị phần Backend cho Sprint Review.
 - **Blockers:** Không có.
 
 ### Nguyễn Chí Hoàng
@@ -385,5 +363,3 @@
 - **Blockers:** Không có.
 
 ---
-
-
